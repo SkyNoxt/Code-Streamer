@@ -13,17 +13,17 @@ var myLayout = new GoldenLayout({
 		type: 'row',
 		content: [{
 			type: 'react-component',
-			component: 'test-component',
+			component: 'TestComponent',
 			props: { label: 'A' }
 		}, {
 			type: 'column',
 			content: [{
 				type: 'react-component',
-				component: 'test-component',
+				component: 'TestComponent',
 				props: { label: 'B' }
 			}, {
 				type: 'react-component',
-				component: 'test-component',
+				component: 'TestComponent',
 				props: { label: 'C' }
 			}]
 		}]
@@ -32,11 +32,11 @@ var myLayout = new GoldenLayout({
 
 class TestComponent extends React.Component {
 	render() {
-		return null;
+		return <div>{ this.props.label }</div>;
 	}
 };
 
-myLayout.registerComponent('test-component', TestComponent);
+myLayout.registerComponent('TestComponent', TestComponent);
 myLayout.init();
 
 ReactDOM.render(<TestComponent />, document.getElementById('CodeStreamer'));
