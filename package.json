@@ -2,29 +2,32 @@
   "name": "code-streamer",
   "version": "1.0.0",
   "description": "Flow Based Programming Framework",
-  "main": "program.js",
+  "main": "src/program.js",
   "scripts": {
-    "start": "electron ."
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject",
+    "electron": "electron .",
+    "dev": "nf start -p 3000"
   },
-  "repository": "",
   "keywords": [
     "Electron",
     "React",
     "Flow Based Programming"
   ],
   "author": "BitFeeling",
+  "homepage": "./",
+  "repository": "",
   "private": true,
   "license": "© Copyright 2018 BitFeeling, all rights reserved.",
   "devDependencies": {
-    "babel-preset-es2015": "latest",
-    "babel-preset-react": "latest",
-    "electron-prebuilt-compile": "latest",
-    "electron-react-devtools": "latest"
+    "electron": "latest"
   },
   "dependencies": {
-    "golden-layout": "latest",
-    "jquery": "latest",
     "react": "latest",
-    "react-dom": "latest"
+    "react-dom": "latest",
+    "jquery": "latest",
+    "golden-layout": "latest"
   }
 }
