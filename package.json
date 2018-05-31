@@ -22,6 +22,8 @@
     "electron-react-devtools": "latest"
   },
   "dependencies": {
+    "golden-layout": "latest",
+    "jQuery": "latest",
     "react": "latest",
     "react-dom": "latest"
   }
