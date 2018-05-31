@@ -1,11 +1,10 @@
-const React = require("react");
-const ReactDOM = require('react-dom');
+import React from "react";
+import ReactDOM, { render as _render } from "react-dom";
 
-const $ = require('jquery');
+import $ from "jquery";
+import GoldenLayout from "golden-layout";
+
 window.$ = $;
-
-const GoldenLayout = require('golden-layout');
-
 window.React = React;
 window.ReactDOM = ReactDOM;
 
@@ -38,9 +37,6 @@ class TestComponent extends React.Component {
 };
 
 myLayout.registerComponent('test-component', TestComponent);
-
-//Once all components are registered, call
 myLayout.init();
 
-// Rendering
 ReactDOM.render(<TestComponent />, document.getElementById('CodeStreamer'));
