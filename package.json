@@ -23,7 +23,7 @@
   },
   "dependencies": {
     "golden-layout": "latest",
-    "jQuery": "latest",
+    "jquery": "latest",
     "react": "latest",
     "react-dom": "latest"
   }
