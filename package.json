@@ -16,7 +16,7 @@
     "Flow Based Programming"
   ],
   "author": "BitFeeling",
-  "homepage": "./",
+  "homepage": "file:./",
   "repository": "",
   "private": true,
   "license": "© Copyright 2018 BitFeeling, all rights reserved.",
