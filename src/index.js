@@ -30,19 +30,13 @@ var myLayout = new GoldenLayout({
 			title: "Configuration",
 			type: 'react-component',
 			component: 'Configuration',
-			props: { label: 'A' }
 		}, {
 			type: 'column',
 			content: [{
-				title: "Title 2",
+				title: "Title",
 				type: 'react-component',
 				component: 'TestComponent',
 				props: { label: 'B' }
-			}, {
-				title: "Title 3",
-				type: 'react-component',
-				component: 'TestComponent',
-				props: { label: 'C' }
 			}]
 		}]
 	}]
@@ -55,29 +49,23 @@ class Configuration extends React.Component {
 		var engine = new DiagramEngine();
 		engine.installDefaultFactories();
 
-		var model = new DiagramModel();
+		var diagram = new DiagramModel();
+		engine.setDiagramModel(diagram);
 
-		//3-A) create a default node
 		var node1 = new DefaultNodeModel("Node 1", "rgb(0,192,255)");
 		let port1 = node1.addOutPort("Out");
 		node1.setPosition(100, 100);
 
-		//3-B) create another default node
 		var node2 = new DefaultNodeModel("Node 2", "rgb(192,255,0)");
 		let port2 = node2.addInPort("In");
 		node2.setPosition(400, 100);
 
-		// link the ports
 		let link1 = port1.link(port2);
 		link1.addLabel("Hello World!");
 
-		//4) add the models to the root graph
-		model.addAll(node1, node2, link1);
+		diagram.addAll(node1, node2, link1);
 
-		//5) load model into engine
-		engine.setDiagramModel(model);
-
-		this.state = { engine: engine, model: model };
+		this.state = { engine: engine, diagram: diagram };
 	}
 
 	render() {
@@ -95,4 +83,4 @@ myLayout.registerComponent('TestComponent', TestComponent);
 myLayout.registerComponent('Configuration', Configuration);
 myLayout.init();
 
-ReactDOM.render(<TestComponent />, document.getElementById('CodeStreamer'));
+//ReactDOM.render(<TestComponent />, document.getElementById('CodeStreamer'));
