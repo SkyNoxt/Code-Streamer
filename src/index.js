@@ -4,6 +4,9 @@ import ReactDOM, { render as _render } from "react-dom";
 import $ from "jquery";
 import GoldenLayout from "golden-layout";
 
+import "golden-layout/src/css/goldenlayout-base.css";
+import "golden-layout/src/css/goldenlayout-dark-theme.css";
+
 window.$ = $;
 window.React = React;
 window.ReactDOM = ReactDOM;
