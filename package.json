@@ -24,9 +24,10 @@
     "electron": "latest"
   },
   "dependencies": {
+    "golden-layout": "latest",
+    "jquery": "latest",
     "react": "latest",
     "react-dom": "latest",
-    "jquery": "latest",
-    "golden-layout": "latest"
+    "storm-react-diagrams": "latest"
   }
 }
