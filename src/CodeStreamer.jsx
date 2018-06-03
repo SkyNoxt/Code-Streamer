@@ -34,6 +34,7 @@ export default class CodeStreamer extends React.Component {
 
 	componentDidMount() {
 		this.state.codeStreamer.init();
+		this.state.codeStreamer.eventHub.emit('layoutDidMount');
 	}
 
 	render() {
