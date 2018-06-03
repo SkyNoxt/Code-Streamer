@@ -28,13 +28,12 @@ export default class CodeStreamer extends React.Component {
 		});
 
 		codeStreamer.registerComponent('Configuration', Configuration);
-		
-		this.state = { codeStreamer: codeStreamer }
-	}
 
-	componentDidMount() {
-		this.state.codeStreamer.init();
-		this.state.codeStreamer.eventHub.emit('layoutDidMount');
+		codeStreamer.on('componentCreated', function (component) {
+			component.container.on('open', () => component.instance._reactComponent.componentOpen());
+		});
+
+		codeStreamer.init();
 	}
 
 	render() {
