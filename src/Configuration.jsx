@@ -3,12 +3,13 @@ import React from "react";
 import {
 	DiagramEngine,
 	DiagramModel,
-	DefaultNodeModel,
 	DiagramWidget
 } from "storm-react-diagrams";
 
 import "storm-react-diagrams/dist/style.min.css"
 import "./Configuration.css"
+
+import { NodeOut, NodeIn, Link, Port } from "./Module"
 
 export default class Configuration extends React.Component {
 
@@ -19,20 +20,13 @@ export default class Configuration extends React.Component {
 		var diagram = new DiagramModel();
 		engine.setDiagramModel(diagram);
 
-		requestAnimationFrame(() => {	
-			var node1 = new DefaultNodeModel("Node 1", "rgb(0,192,255)");
-			let port1 = node1.addOutPort("Out");
-			node1.setPosition(100, 100);
-	
-			var node2 = new DefaultNodeModel("Node 2", "rgb(192,255,0)");
-			let port2 = node2.addInPort("In");
-			node2.setPosition(400, 100);
-	
-			let link1 = port1.link(port2);
-			link1.addLabel("Hello World!");
-	
-			diagram.addAll(node1, node2, link1);
-			
+		requestAnimationFrame(() => {
+			var node1 = new NodeOut();
+			var node2 = new NodeIn();
+			var node3 = new NodeIn();
+
+			diagram.addAll(node1, node2, node3);
+
 			this.render = () => <DiagramWidget className="configuration" diagramEngine={engine} />;
 			this.forceUpdate();
 		});
