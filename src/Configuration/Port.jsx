@@ -11,7 +11,7 @@ export default class Port extends DefaultPortModel {
 	}
 
 	//Make our custom Ports use our custom Links
-	createLinkModel(port) {
+	createLinkModel() {
 		return new Link();
 	}
 
