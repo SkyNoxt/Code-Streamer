@@ -9,7 +9,7 @@ import {
 import "storm-react-diagrams/dist/style.min.css"
 import "./Configuration.css"
 
-import { NodeOut, NodeIn, Link, Port } from "./Module"
+import Node from "./Node"
 
 export default class Configuration extends React.Component {
 
@@ -24,6 +24,7 @@ export default class Configuration extends React.Component {
 			var node1 = new NodeOut();
 			var node2 = new NodeIn();
 			var node3 = new NodeIn();
+			node3.setPosition(400, 200);
 
 			diagram.addAll(node1, node2, node3);
 
@@ -37,4 +38,29 @@ export default class Configuration extends React.Component {
 	render() {
 		return null;
 	}
+}
+
+class NodeOut extends Node {
+
+	constructor() {
+		super("Node 1", "rgb(0,192,255)");
+		this.out = this.addOutPort("Out", (port) => console.log("Connected to OUT " + port.id), (data) => console.log("NODE OUT SAMPLE CALLBACK " + data));
+		this.setPosition(100, 100);
+
+		//Example out
+		setInterval(() => {
+			this.out.transmit("TestData");
+		}, 100);
+	}
+
+}
+
+class NodeIn extends Node {
+
+	constructor() {
+		super("Node 2", "rgb(192,255,0)");
+		this.in = this.addInPort("In", (port) => console.log("Connected to IN " + port.id), (data) => console.log("NODE IN SAMPLE CALLBACK " + data));
+		this.setPosition(400, 100);
+	}
+
 }
