@@ -9,7 +9,7 @@ export class NodeFactory extends DefaultNodeFactory {
 
 	generateReactWidget(diagramEngine, node) {
 		return (
-			<div className="node-wrapper" onClick={() => { console.log(node); }}>
+			<div className="node-wrapper" onClick={() => { }}>
 				<DefaultNodeWidget node={node} />
 			</div>
 		);
