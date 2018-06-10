@@ -15,17 +15,17 @@ export default class Configuration extends React.Component {
 
 	componentOpen() {
 		var engine = new DiagramEngine();
-		//engine.installDefaultFactories();
+		engine.installDefaultFactories();
 		engine.registerNodeFactory(new NodeFactory());
+
 		var diagram = new DiagramModel();
-		
 
 		engine.setDiagramModel(diagram);
 
 		requestAnimationFrame(() => {
-			var node1 = new Node();
-			var node2 = new Node();
-			var node3 = new Node();
+			var node1 = new NodeOut();
+			var node2 = new NodeIn();
+			var node3 = new NodeIn();
 			node3.setPosition(400, 200);
 
 			diagram.addAll(node1, node2, node3);
@@ -34,7 +34,7 @@ export default class Configuration extends React.Component {
 			this.forceUpdate();
 		});
 
-		this.state = { engine: engine, diagram: diagram };
+		this.setState({ engine: engine, diagram: diagram });
 	}
 
 	render() {

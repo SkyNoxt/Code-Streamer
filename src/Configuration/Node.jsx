@@ -1,16 +1,15 @@
 
 import React from "react";
-import { AbstractNodeFactory, DefaultNodeModel, DefaultNodeWidget } from "storm-react-diagrams";
+import { DefaultNodeFactory, DefaultNodeModel, DefaultNodeWidget } from "storm-react-diagrams";
 import Port from "./Port";
 
-export class NodeFactory extends AbstractNodeFactory {
-	constructor() {
-		super("Node");
-	}
+export class NodeFactory extends DefaultNodeFactory {
+
+	//Make our Custom Nodes use our custom NodeWidgets
 
 	generateReactWidget(diagramEngine, node) {
 		return (
-			<div className="nodeWrapper" onClick={() => { console.log("CLICK!") }}>
+			<div className="node-wrapper" onClick={() => { console.log(node); }}>
 				<DefaultNodeWidget node={node} />
 			</div>
 		);
@@ -22,11 +21,6 @@ export class NodeFactory extends AbstractNodeFactory {
 }
 
 export default class Node extends DefaultNodeModel {
-
-	constructor() {
-		super();
-		this.type = "Node";
-	}
 
 	//Make our custom Nodes use our custom Ports
 	addOutPort(label, linkCallback, sampleCallback) {

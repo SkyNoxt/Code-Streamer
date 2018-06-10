@@ -5,9 +5,9 @@ import Link from "./Link";
 export default class Port extends DefaultPortModel {
 
 	constructor(isInput, label, linkCallback, sampleCallback) {
-		super(isInput, "", label);
-		this.linkCallback = linkCallback;
-		this.sampleCallback = sampleCallback;
+		super(isInput, label);
+		this.linkCallback = linkCallback || function () { };
+		this.sampleCallback = sampleCallback || function () { };
 	}
 
 	//Make our custom Ports use our custom Links
