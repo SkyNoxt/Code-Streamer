@@ -9,24 +9,26 @@ import {
 import "storm-react-diagrams/dist/style.min.css"
 import "./Configuration.css"
 
-import Node from "./Node"
+import Node, { NodeFactory } from "./Node"
 
 export default class Configuration extends React.Component {
 
 	componentOpen() {
 		var engine = new DiagramEngine();
-		engine.installDefaultFactories();
-
+		//engine.installDefaultFactories();
+		engine.registerNodeFactory(new NodeFactory());
 		var diagram = new DiagramModel();
+		
+
 		engine.setDiagramModel(diagram);
 
 		requestAnimationFrame(() => {
-			/*var node1 = new NodeOut();
-			var node2 = new NodeIn();
-			var node3 = new NodeIn();
+			var node1 = new Node();
+			var node2 = new Node();
+			var node3 = new Node();
 			node3.setPosition(400, 200);
 
-			diagram.addAll(node1, node2, node3);*/
+			diagram.addAll(node1, node2, node3);
 
 			this.render = () => <DiagramWidget className="configuration" diagramEngine={engine} />;
 			this.forceUpdate();
@@ -40,7 +42,7 @@ export default class Configuration extends React.Component {
 	}
 }
 
-/*class NodeOut extends Node {
+class NodeOut extends Node {
 
 	constructor() {
 		super("Node 1", "rgb(0,192,255)");
@@ -63,4 +65,4 @@ class NodeIn extends Node {
 		this.setPosition(400, 100);
 	}
 
-}*/
+}
