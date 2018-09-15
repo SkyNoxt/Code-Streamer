@@ -20,20 +20,22 @@ export default class CodeStreamer extends React.Component {
 			content: [{
 				type: 'row',
 				content: [{
-					title: "Configuration",
 					type: 'react-component',
-					component: 'Configuration',
+					title: "Configuration",
+					component: 'Configuration'
 				}]
 			}]
 		});
 
 		codeStreamer.registerComponent('Configuration', Configuration);
 
-		codeStreamer.on('componentCreated', function (component) {
+		/*codeStreamer.on('componentCreated', function (component) {
 			component.container.on('open', () => component.instance._reactComponent.componentOpen());
-		});
+		});*/
 
 		codeStreamer.init();
+
+		window.CodeStreamer = codeStreamer;
 	}
 
 	render() {

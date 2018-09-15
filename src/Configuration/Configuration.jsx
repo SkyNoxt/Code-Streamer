@@ -13,7 +13,9 @@ import Node, { NodeFactory } from "./Node"
 
 export default class Configuration extends React.Component {
 
-	componentOpen() {
+	constructor(props) {
+		super(props);
+
 		var engine = new DiagramEngine();
 		engine.installDefaultFactories();
 		engine.registerNodeFactory(new NodeFactory());
@@ -22,19 +24,14 @@ export default class Configuration extends React.Component {
 
 		engine.setDiagramModel(diagram);
 
-		requestAnimationFrame(() => {
-			/*var node1 = new NodeOut();
-			var node2 = new NodeIn();
-			var node3 = new NodeIn();
-			node3.setPosition(400, 200);
+		var node1 = new NodeOut();
+		var node2 = new NodeIn();
+		var node3 = new NodeIn();
+		node3.setPosition(400, 200);
 
-			diagram.addAll(node1, node2, node3);*/
+		diagram.addAll(node1, node2, node3);
 
-			this.render = () => <DiagramWidget className="configuration" diagramEngine={engine} />;
-			this.forceUpdate();
-		});
-
-		this.state = { engine: engine, diagram: diagram };
+		this.render = () => <DiagramWidget className="configuration" diagramEngine={engine} />;
 	}
 
 	render() {
@@ -42,7 +39,7 @@ export default class Configuration extends React.Component {
 	}
 }
 
-/*class NodeOut extends Node {
+class NodeOut extends Node {
 
 	constructor() {
 		super("Node 1", "rgb(0,192,255)");
@@ -53,8 +50,17 @@ export default class Configuration extends React.Component {
 		setInterval(() => {
 			this.out.transmit("TestData");
 		}, 100);
+		this.registerProperties(this.Properties);
 	}
 
+	Properties = {
+		title: "NodeOut Properties",
+		name: "NodeOutProperties",
+		state: this.state,
+		render: () => {
+			return "<div class='asdfgra'>fgrthjyuythrgfrth5667647</div>";
+		}
+	};
 }
 
 class NodeIn extends Node {
@@ -65,4 +71,4 @@ class NodeIn extends Node {
 		this.setPosition(400, 100);
 	}
 
-}*/
+}

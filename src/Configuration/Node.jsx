@@ -9,7 +9,7 @@ export class NodeFactory extends DefaultNodeFactory {
 
 	generateReactWidget(diagramEngine, node) {
 		return (
-			<div className="node-wrapper" onClick={() => { }}>
+			<div className="node-wrapper" onDoubleClick={() => node.showProperties()}>
 				<DefaultNodeWidget node={node} />
 			</div>
 		);
@@ -32,4 +32,19 @@ export default class Node extends DefaultNodeModel {
 		return this.addPort(new Port(true, label, linkCallback, sampleCallback));
 	}
 
+	registerProperties(properties) {
+		window.CodeStreamer.registerComponent(properties.name, function (container, state) {
+			container.getElement().html(properties.render());
+		});
+	}
+
+	showProperties() {
+		var nodeProperties = {
+			type: 'component',
+			title: this.Properties.title,
+			componentName: this.Properties.name,
+			componentState: this.Properties.state
+		};
+		window.CodeStreamer.root.contentItems[0].addChild(nodeProperties);
+	}
 }
