@@ -49,7 +49,7 @@ export default class Node extends DefaultNodeModel {
 			type: 'react-component',
 			title: this.controls.title,
 			component: this.controls.name,
-			componentState: { node: this }
+			componentState: { node: this.id }
 		};
 		window.CodeStreamer.root.contentItems[0].addChild(controls);
 	}

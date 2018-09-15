@@ -32,6 +32,8 @@ export default class Configuration extends React.Component {
 		diagram.addAll(node1, node2, node3);
 
 		this.render = () => <DiagramWidget className="configuration" diagramEngine={engine} />;
+
+		window.diagram = diagram;
 	}
 
 	render() {
@@ -59,7 +61,7 @@ class NodeOutControls extends React.Component {
 	name = "NodeOutControls";
 
 	render() {
-		return (<div onClick={() => { console.log(this.state.node) }} className='props'>NODE PROPS HTML</div>);
+		return (<div onClick={() => { console.log(window.diagram.getNode(this.state.node)) }} className='props'>NODE PROPS HTML</div>);
 	}
 }
 
