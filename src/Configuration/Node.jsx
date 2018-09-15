@@ -25,7 +25,7 @@ export default class Node extends DefaultNodeModel {
 	constructor(name, color, controls) {
 		super(name, color);
 		if (controls) {
-			window.CodeStreamer.registerComponent(controls.name, controls.constructor);
+			window.codeStreamer.registerComponent(controls.name, controls.constructor);
 			this.controls = controls;
 		}
 	}
@@ -51,6 +51,6 @@ export default class Node extends DefaultNodeModel {
 			component: this.controls.name,
 			componentState: { node: this.id }
 		};
-		window.CodeStreamer.root.contentItems[0].addChild(controls);
+		window.codeStreamer.root.contentItems[0].addChild(controls);
 	}
 }

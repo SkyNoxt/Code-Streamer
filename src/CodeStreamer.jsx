@@ -35,7 +35,7 @@ export default class CodeStreamer extends React.Component {
 
 		codeStreamer.init();
 
-		window.CodeStreamer = codeStreamer;
+		window.codeStreamer = codeStreamer;
 	}
 
 	render() {
