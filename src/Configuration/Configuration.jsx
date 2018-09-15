@@ -42,7 +42,7 @@ export default class Configuration extends React.Component {
 class NodeOut extends Node {
 
 	constructor() {
-		super("Node 1", "rgb(0,192,255)");
+		super("Node 1", "rgb(0,192,255)", new NodeOutControls());
 		this.out = this.addOutPort("Out", (port) => console.log("Connected to OUT " + port.id), (data) => console.log("NODE OUT SAMPLE CALLBACK " + data));
 		this.setPosition(100, 100);
 
@@ -50,17 +50,17 @@ class NodeOut extends Node {
 		setInterval(() => {
 			this.out.transmit("TestData");
 		}, 100);
-		this.registerProperties(this.Properties);
 	}
+}
 
-	Properties = {
-		title: "NodeOut Properties",
-		name: "NodeOutProperties",
-		state: this.state,
-		render: () => {
-			return "<div class='asdfgra'>fgrthjyuythrgfrth5667647</div>";
-		}
-	};
+class NodeOutControls extends React.Component {
+
+	title = "NodeOut Controls";
+	name = "NodeOutControls";
+
+	render() {
+		return (<div onClick={() => { console.log(this.state.node) }} className='props'>NODE PROPS HTML</div>);
+	}
 }
 
 class NodeIn extends Node {
