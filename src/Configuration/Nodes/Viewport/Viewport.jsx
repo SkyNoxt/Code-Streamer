@@ -5,6 +5,8 @@ import ReactDOM from "react-dom";
 import * as THREE from "three";
 import OrbitControls from "./OrbitControls"
 
+import * as Stats from "stats.js";
+
 import Node from "../../Node"
 
 export default class Viewport extends Node {
@@ -29,6 +31,9 @@ class ViewportControls extends React.Component {
 	title = "Viewport";
 
 	componentWillMount() {
+		let stats = new Stats();
+		stats.dom.style.position = "absolute";
+
 		let renderer = new THREE.WebGLRenderer();
 		renderer.setPixelRatio(window.devicePixelRatio);
 
@@ -44,13 +49,16 @@ class ViewportControls extends React.Component {
 		
 		scene.add(gridHelper);
 
-		this.setState({ renderer: renderer, camera: camera, scene: scene });
+		this.setState({ stats: stats, renderer: renderer, camera: camera, scene: scene });
 	}
 
 	componentDidMount() {
 		let DOMNode = ReactDOM.findDOMNode(this);
 		DOMNode.appendChild(this.state.renderer.domElement);
+		DOMNode.appendChild(this.state.stats.dom);
+
 		var controls = new OrbitControls(this.state.camera, DOMNode);
+
 		this.animate();
 	}
 
@@ -61,8 +69,10 @@ class ViewportControls extends React.Component {
 	}
 
 	animate() {
-		requestAnimationFrame(() => this.animate());
+		this.state.stats.begin();
 		this.state.renderer.render(this.state.scene, this.state.camera);
+		this.state.stats.end();
+		requestAnimationFrame(() => this.animate());
 	}
 
 	render() {

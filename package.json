@@ -26,6 +26,7 @@
     "jquery": "latest",
     "react": "latest",
     "react-dom": "latest",
+    "stats.js": "latest",
     "storm-react-diagrams": "latest",
     "three": "latest"
   }
