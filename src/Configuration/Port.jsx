@@ -21,5 +21,4 @@ export default class Port extends DefaultPortModel {
 				this.links[linkID].targetPort.sampleCallback(data);
 		}
 	}
-
 }

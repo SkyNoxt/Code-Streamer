@@ -6,7 +6,6 @@ import Port from "./Port";
 export class NodeFactory extends DefaultNodeFactory {
 
 	//Make our Custom Nodes use our custom NodeWidgets
-
 	generateReactWidget(diagramEngine, node) {
 		return (
 			<div className="node-wrapper" onDoubleClick={() => node.showControls()}>
@@ -25,7 +24,8 @@ export default class Node extends DefaultNodeModel {
 	constructor(name, color, controls) {
 		super(name, color);
 		if (controls) {
-			window.codeStreamer.registerComponent(controls.name, controls.constructor);
+			if (!(controls.constructor in window.codeStreamer._components))
+				window.codeStreamer.registerComponent(controls.constructor, controls.constructor);
 			this.controls = controls;
 		}
 	}
@@ -48,7 +48,7 @@ export default class Node extends DefaultNodeModel {
 		var controls = {
 			type: 'react-component',
 			title: this.controls.title,
-			component: this.controls.name,
+			component: this.controls.constructor,
 			componentState: { node: this }
 		};
 		window.codeStreamer.root.contentItems[0].addChild(controls);

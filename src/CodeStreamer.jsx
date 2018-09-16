@@ -32,9 +32,10 @@ export default class CodeStreamer extends React.Component {
 
 		codeStreamer.registerComponent('Configuration', Configuration);
 
-		/*codeStreamer.on('componentCreated', function (component) {
-			component.container.on('open', () => component.instance._reactComponent.componentOpen());
-		});*/
+		codeStreamer.on('componentCreated', function (component) {
+			component.container.on('resize', () => component.instance._reactComponent.componentResize && component.instance._reactComponent.componentResize(component.container));
+			component.container.on('open', () => component.instance._reactComponent.componentOpen && component.instance._reactComponent.componentOpen(component.container));
+		});
 
 		codeStreamer.init();
 
