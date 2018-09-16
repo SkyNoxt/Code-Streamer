@@ -6,6 +6,7 @@ import * as THREE from "three";
 import OrbitControls from "./OrbitControls"
 
 import * as Stats from "stats.js";
+import "./Stats.css"
 
 import Node from "../../Node"
 
@@ -32,7 +33,7 @@ class ViewportControls extends React.Component {
 
 	componentWillMount() {
 		let stats = new Stats();
-		stats.dom.style.position = "absolute";
+		stats.dom.className = "stats";
 
 		let renderer = new THREE.WebGLRenderer();
 		renderer.setPixelRatio(window.devicePixelRatio);
