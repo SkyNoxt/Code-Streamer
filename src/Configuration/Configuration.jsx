@@ -10,6 +10,8 @@ import "storm-react-diagrams/dist/style.min.css"
 import "./Configuration.css"
 
 import { NodeFactory } from "./Node"
+
+import NetworkSocket from "./Nodes/NetworkSocket/NetworkSocket"
 import Viewport from "./Nodes/Viewport/Viewport"
 
 export default class Configuration extends React.Component {
@@ -25,8 +27,10 @@ export default class Configuration extends React.Component {
 
 		engine.setDiagramModel(diagram);
 
+		let networkSocket = new NetworkSocket();
 		let viewport = new Viewport();
-		diagram.addAll(viewport);
+
+		diagram.addAll(networkSocket, viewport);
 
 		this.render = () => <DiagramWidget className="configuration" diagramEngine={engine} />;
 	}

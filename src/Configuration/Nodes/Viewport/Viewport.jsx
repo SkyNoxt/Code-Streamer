@@ -3,26 +3,26 @@ import React from "react";
 import ReactDOM from "react-dom";
 
 import * as THREE from "three";
-import OrbitControls from "./OrbitControls"
+import OrbitControls from "./OrbitControls";
 
 import * as Stats from "stats.js";
-import "./Stats.css"
+import "./Stats.css";
 
-import Node from "../../Node"
+import Node from "../../Node";
 
 export default class Viewport extends Node {
 
 	constructor() {
-		super("Viewport", "rgb(192,255,0)", new ViewportControls());
+		super("Viewport", "rgb(192, 255, 0)", new ViewportControls());
 
-		this.primitives = this.addInPort("Primitives", (port) => this.primitivesConnected(port), (primitive) => this.primitivesReceived(primitive));
+		this.primitives = this.addInPort("Primitives", (port) => this.primitivesConnected(port), (primitive) => this.primitiveReceived(primitive));
 	}
 
 	primitivesConnected(port) {
 		console.log("Connected Primitive " + port);
 	}
 
-	primitivesReceived(primitive) {
+	primitiveReceived(primitive) {
 		console.log("Primitive received " + primitive);
 	}
 }
