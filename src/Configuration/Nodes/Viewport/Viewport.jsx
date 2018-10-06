@@ -47,7 +47,7 @@ class ViewportControls extends React.Component {
 
 		gridHelper.position.y = -5;
 		gridHelper.position.x = 0;
-		
+
 		scene.add(gridHelper);
 
 		this.setState({ stats: stats, renderer: renderer, camera: camera, scene: scene });
