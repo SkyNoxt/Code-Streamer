@@ -5,6 +5,10 @@
 	background-size: 50px 50px;
 }
 
+.configuration:focus {
+	outline: none;
+}
+
 .srd-node--selected>*>* {
 	border-color: #00c0ff !important
 }
