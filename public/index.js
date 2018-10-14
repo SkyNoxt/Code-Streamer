@@ -1,24 +1,23 @@
 
 import CodeStreamer from "../src/CodeStreamer";
 
-const remote = window.require('electron').remote;
+var browserWindow = window.require('electron').remote.getCurrentWindow();
 
 function init() {
 	document.getElementById("min-btn").addEventListener("click", function (e) {
-		remote.getCurrentWindow().minimize();
+		browserWindow.minimize();
 	});
 
 	document.getElementById("max-btn").addEventListener("click", function (e) {
-		const window = remote.getCurrentWindow();
-		if (!window.isMaximized()) {
-			window.maximize();
+		if (!browserWindow.isMaximized()) {
+			browserWindow.maximize();
 		} else {
-			window.unmaximize();
+			browserWindow.unmaximize();
 		}
 	});
 
 	document.getElementById("close-btn").addEventListener("click", function (e) {
-		const window = remote.getCurrentWindow().close();
+		browserWindow.close();
 	});
 };
 
