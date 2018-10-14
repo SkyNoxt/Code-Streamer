@@ -29,7 +29,9 @@ export default class CodeStreamer extends React.Component {
 					component: 'Configuration'
 				}]
 			}]
-		});
+		}, document.getElementById('CodeStreamer'));
+
+		window.onresize = () => codeStreamer.updateSize();
 
 		codeStreamer.registerComponent('Configuration', Configuration);
 
