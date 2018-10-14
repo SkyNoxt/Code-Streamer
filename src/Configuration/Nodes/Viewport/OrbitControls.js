@@ -234,10 +234,10 @@ THREE.OrbitControls = function (object, domElement) {
 		scope.domElement.removeEventListener('touchend', onTouchEnd, false);
 		scope.domElement.removeEventListener('touchmove', onTouchMove, false);
 
-		document.removeEventListener('mousemove', onMouseMove, false);
-		document.removeEventListener('mouseup', onMouseUp, false);
+		scope.domElement.removeEventListener('mousemove', onMouseMove, false);
+		scope.domElement.removeEventListener('mouseup', onMouseUp, false);
 
-		window.removeEventListener('keydown', onKeyDown, false);
+		scope.domElement.removeEventListener('keydown', onKeyDown, false);
 
 		//scope.dispatchEvent( { type: 'dispose' } ); // should this be added here?
 
@@ -917,7 +917,7 @@ THREE.OrbitControls = function (object, domElement) {
 	scope.domElement.addEventListener('touchend', onTouchEnd, false);
 	scope.domElement.addEventListener('touchmove', onTouchMove, false);
 
-	window.addEventListener('keydown', onKeyDown, false);
+	scope.domElement.addEventListener('keydown', onKeyDown, false);
 
 	// force an update at start
 

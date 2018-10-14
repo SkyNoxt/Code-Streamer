@@ -36,6 +36,7 @@ class ViewportControls extends React.Component {
 		stats.dom.className = "stats";
 
 		let renderer = new THREE.WebGLRenderer();
+		renderer.domElement.tabIndex = 0;
 		renderer.setPixelRatio(window.devicePixelRatio);
 
 		let camera = new THREE.PerspectiveCamera(70, window.innerWidth / window.innerHeight, 1, 1000);
