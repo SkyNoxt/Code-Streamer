@@ -52,7 +52,6 @@ class NetworkSocketControls extends React.Component {
 	}
 
 	componentDidMount() {
-
 		const gui = new GUI({ hideable: false });
 
 		gui.add(this.props.node.options, 'protocol', { udp4: "udp4", udp6: "udp6" }).name("Protocol").onFinishChange((option) => { });
