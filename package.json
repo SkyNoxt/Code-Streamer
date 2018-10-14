@@ -22,6 +22,7 @@
     "electron": "latest"
   },
   "dependencies": {
+    "dat.gui": "latest",
     "golden-layout": "latest",
     "jquery": "latest",
     "react": "latest",
