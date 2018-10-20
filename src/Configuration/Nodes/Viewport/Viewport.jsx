@@ -65,8 +65,9 @@ class ViewportControls extends React.Component {
 	}
 
 	componentResize(container) {
-		this.state.camera.aspect = container.width / container.height;
-		this.state.camera.updateProjectionMatrix();
+		let camera = this.state.camera;
+		camera.aspect = container.width / container.height;
+		camera.updateProjectionMatrix();
 		this.state.renderer.setSize(container.width, container.height);
 	}
 
