@@ -59,7 +59,7 @@ class ViewportControls extends React.Component {
 		DOMNode.appendChild(this.state.renderer.domElement);
 		DOMNode.appendChild(this.state.stats.dom);
 
-		var controls = new OrbitControls(this.state.camera, DOMNode);
+		new OrbitControls(this.state.camera, DOMNode);
 
 		this.animate();
 	}

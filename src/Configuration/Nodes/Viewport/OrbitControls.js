@@ -564,6 +564,9 @@ THREE.OrbitControls = function (object, domElement) {
 				scope.update();
 				break;
 
+			default:
+				break;
+
 		}
 
 	}
@@ -722,6 +725,9 @@ THREE.OrbitControls = function (object, domElement) {
 
 				break;
 
+			default:
+				break;
+
 		}
 
 		if (state !== STATE.NONE) {
@@ -765,6 +771,9 @@ THREE.OrbitControls = function (object, domElement) {
 
 				handleMouseMovePan(event);
 
+				break;
+
+			default:
 				break;
 
 		}
