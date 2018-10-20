@@ -7,39 +7,41 @@ import "./GUI.css";
 
 import Node from "../../Node"
 
+const dgram = window.require('electron').remote.require("dgram");
+
 export default class NetworkSocket extends Node {
 
 	constructor() {
 		super("Network Socket", "rgb(255, 192, 0)", new NetworkSocketControls());
 
 		this.options = {
-			protocol: 'udp4',
+			protocol: 'udp6',
 			multicastIP: "",
 			port: 1024
 		};
 
-		this.packets = this.addOutPort("Packets", (port) => this.PacketsConnected(port), (packet) => this.PacketSent(packet));
+		this.packets = this.addOutPort("Packets");
+		this.connect();
+	}
 
-		const socket = window.require('electron').remote.require("dgram").createSocket({ type: "udp4", reuseAddr: true });
+	connect() {
+		this.socket = dgram.createSocket({ type: this.options.protocol, reuseAddr: true });
 
-		socket.on("listening", () => {
+		this.socket.on("listening", () => {
 			if (this.options.multicastIP)
-				socket.addMembership(this.options.multicastIP);
+				this.socket.addMembership(this.options.multicastIP);
 		});
 
-		socket.on("message", (message, info) => {
+		this.socket.on("message", (message, info) => {
 			this.packets.transmit(message);
 		});
 
-		socket.bind(this.options.port);
+		this.socket.bind(this.options.port);
 	}
 
-	PacketsConnected(port) {
-		console.log("Connected Packets " + port);
-	}
-
-	PacketSent(packet) {
-		console.log("Packet sent " + packet);
+	reconnect() {
+		this.socket.close();
+		this.connect();
 	}
 }
 
@@ -48,15 +50,15 @@ class NetworkSocketControls extends React.Component {
 	title = "Network Socket";
 
 	componentWillMount() {
-
+		this.node = this.props.node;
 	}
 
 	componentDidMount() {
 		const gui = new GUI({ hideable: false });
 
-		gui.add(this.props.node.options, 'protocol', { udp4: "udp4", udp6: "udp6" }).name("Protocol").onFinishChange((option) => { });
-		gui.add(this.props.node.options, 'multicastIP').name("Multicast IP").onFinishChange((option) => { });
-		gui.add(this.props.node.options, 'port').name("Port").onFinishChange((option) => { });
+		gui.add(this.node.options, 'protocol', { udp4: "udp4", udp6: "udp6" }).name("Protocol").onFinishChange(() => this.node.reconnect());
+		gui.add(this.node.options, 'multicastIP').name("Multicast IP").onFinishChange(() => this.node.reconnect());
+		gui.add(this.node.options, 'port').name("Port").onFinishChange(() => this.node.reconnect());
 
 		let DOMNode = ReactDOM.findDOMNode(this);
 		DOMNode.appendChild(gui.domElement);
