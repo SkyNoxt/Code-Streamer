@@ -1,5 +1,6 @@
 
 import React from "react";
+import ReactDOM from "react-dom";
 
 import { DefaultNodeFactory, DefaultNodeModel, DefaultNodeWidget } from "storm-react-diagrams";
 import Port from "./Port";
@@ -14,7 +15,7 @@ export class NodeFactory extends DefaultNodeFactory {
 				<ContextMenuTrigger holdToDisplay="-1" id={node.id}>
 					<DefaultNodeWidget node={node} />
 				</ContextMenuTrigger>
-				{node.getContextMenu && node.getContextMenu(diagramEngine)}
+				{node.getContextMenu && diagramEngine.contextWrapper && ReactDOM.createPortal(node.getContextMenu(), diagramEngine.contextWrapper)}
 			</div>
 		);
 	}
