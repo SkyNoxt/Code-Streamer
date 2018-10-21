@@ -37,6 +37,7 @@ class ViewportControls extends React.Component {
 
 		let renderer = new THREE.WebGLRenderer();
 		renderer.domElement.tabIndex = 0;
+		renderer.setClearColor(0x222222);
 		renderer.setPixelRatio(window.devicePixelRatio);
 
 		let camera = new THREE.PerspectiveCamera(70, window.innerWidth / window.innerHeight, 1, 1000);
@@ -44,7 +45,7 @@ class ViewportControls extends React.Component {
 
 		let scene = new THREE.Scene();
 
-		let gridHelper = new THREE.GridHelper(500, 100, 0x00ff00, 0x808080);
+		let gridHelper = new THREE.GridHelper(500, 100, 0x00ff00, 0x000000);
 
 		gridHelper.position.y = -5;
 		gridHelper.position.x = 0;

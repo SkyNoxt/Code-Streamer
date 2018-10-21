@@ -2,7 +2,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
-import $ from "jquery";
 import GoldenLayout from "golden-layout";
 
 import "golden-layout/src/css/goldenlayout-base.css";
@@ -10,7 +9,6 @@ import "golden-layout/src/css/goldenlayout-dark-theme.css";
 
 import Configuration from "./Configuration/Configuration";
 
-window.$ = $;
 window.React = React;
 window.ReactDOM = ReactDOM;
 
