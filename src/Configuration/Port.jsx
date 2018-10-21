@@ -10,7 +10,6 @@ export default class Port extends DefaultPortModel {
 		this.sampleCallback = sampleCallback || function () { };
 	}
 
-	//Make our custom Ports use our custom Links
 	createLinkModel() {
 		return new Link();
 	}

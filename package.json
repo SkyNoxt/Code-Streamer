@@ -26,6 +26,7 @@
     "golden-layout": "latest",
     "jquery": "latest",
     "react": "latest",
+    "react-contextmenu": "latest",
     "react-dom": "latest",
     "stats.js": "latest",
     "storm-react-diagrams": "latest",
