@@ -11,6 +11,8 @@ import {
 import "storm-react-diagrams/dist/style.min.css"
 import "./Configuration.css"
 
+import "./react-contextmenu.css"
+
 import { NodeFactory } from "./Node"
 
 import NetworkSocket from "./Nodes/NetworkSocket/NetworkSocket"
