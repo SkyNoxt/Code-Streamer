@@ -17,11 +17,13 @@
   "homepage": "file:./",
   "repository": "",
   "private": true,
-  "license": "© Copyright 2018 BitFeeling, all rights reserved.",
+  "copyright": "© Copyright 2018 BitFeeling, all rights reserved.",
+  "license": "",
   "devDependencies": {
     "electron": "latest"
   },
   "dependencies": {
+    "about-window": "latest",
     "dat.gui": "latest",
     "golden-layout": "latest",
     "jquery": "latest",
