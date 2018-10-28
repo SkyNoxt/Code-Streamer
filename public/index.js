@@ -16,7 +16,7 @@ function init() {
 			homepage: "www.bitfeeling.net",
 			description: "Flow Based Programming Framework",
 			//license: "",
-			win_options: { parent: browserWindow, modal: true, resizable: false },
+			win_options: { parent: browserWindow, modal: true, resizable: false, skipTaskbar: true },
 			//css_path: [ "" ],
 			//adjust_window_size: false,
 			//open_devtools: false,
