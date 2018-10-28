@@ -16,10 +16,10 @@ function init() {
 			homepage: "www.bitfeeling.net",
 			description: "Flow Based Programming Framework",
 			//license: "",
-			//win_options: { },
+			win_options: { parent: browserWindow, modal: true, resizable: false },
 			//css_path: [ "" ],
 			//adjust_window_size: false,
-			open_devtools: true,
+			//open_devtools: false,
 			//use_inner_html: false,
 			use_version_info: true
 		});
