@@ -13,11 +13,11 @@
     "React",
     "Flow Based Programming"
   ],
-  "author": "BitFeeling",
+  "author": "ArtemPix",
   "homepage": "file:./",
   "repository": "",
   "private": true,
-  "copyright": "© Copyright 2018 BitFeeling, all rights reserved.",
+  "copyright": "© Copyright 2019 ArtemPix, all rights reserved.",
   "license": "",
   "devDependencies": {
     "electron": "latest"

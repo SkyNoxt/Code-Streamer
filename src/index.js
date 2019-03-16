@@ -7,25 +7,28 @@ const browserWindow = remote.getCurrentWindow();
 const openAboutWindow = remote.require("about-window").default;
 
 function init() {
+	let aboutWindow = null;
 	document.getElementById("about-btn").addEventListener("click", function (e) {
-		const icon = remote.app.getAppPath() + "/build/img/code-streamer.png";
-		openAboutWindow({
-			icon_path: icon,
-			product_name: "Code Streamer",
-			//package_json_dir: "",
-			bug_report_url: "www.bitfeeling.net",
-			bug_link_text: "BitFeeling",
-			copyright: "© Copyright 2018 BitFeeling, all rights reserved.",
-			homepage: "www.bitfeeling.net",
-			description: "Flow Based Programming Framework",
-			//license: "",
-			win_options: { parent: browserWindow, modal: true, resizable: false, skipTaskbar: true, icon: icon },
-			//css_path: [ "" ],
-			//adjust_window_size: false,
-			//open_devtools: false,
-			//use_inner_html: false,
-			use_version_info: true
-		});
+		if (aboutWindow) {
+			aboutWindow.close();
+			aboutWindow = null;
+			this.innerText = '?';
+		}
+		else {
+			let appPath = remote.app.getAppPath();
+			aboutWindow = openAboutWindow({
+				icon_path: appPath + "/build/img/code-streamer.png",
+				product_name: "Code Streamer",
+				bug_report_url: "https://www.artempix.net",
+				bug_link_text: "artempix.net",
+				copyright: "© Copyright 2018 ArtemPix, all rights reserved.",
+				description: "Flow Based Programming Framework",
+				win_options: { parent: browserWindow, frame: false, resizable: false, skipTaskbar: true },
+				css_path: appPath + "/build/index.css",
+				use_version_info: true
+			});
+			this.innerText = '¿';
+		}
 	});
 
 	document.getElementById("min-btn").addEventListener("click", function (e) {

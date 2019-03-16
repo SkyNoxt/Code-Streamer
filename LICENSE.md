@@ -1,0 +1,1 @@
+© Copyright 2019 ArtemPix, all rights reserved.
