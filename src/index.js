@@ -49,7 +49,7 @@ function init() {
 };
 
 document.onreadystatechange = function () {
-	if (document.readyState == "complete") {
+	if (document.readyState === "complete") {
 		init();
 	}
 };
