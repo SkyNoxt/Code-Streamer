@@ -4,7 +4,6 @@
   "description": "Flow Based Programming Framework",
   "main": "src/program.js",
   "scripts": {
-    "start": "react-scripts start",
     "build": "babel ./src -d ./build",
     "electron": "electron ."
   },
@@ -20,11 +19,11 @@
   "copyright": "© Copyright 2019 ArtemPix, all rights reserved.",
   "license": "",
   "devDependencies": {
-    "@babel/core": "latest",
     "@babel/cli": "latest",
-    "@babel/register": "latest",
+    "@babel/core": "latest",
     "@babel/preset-env": "latest",
     "@babel/preset-react": "latest",
+    "@babel/register": "latest",
     "electron": "latest"
   },
   "dependencies": {
