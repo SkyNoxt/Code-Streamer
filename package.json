@@ -5,7 +5,7 @@
   "main": "src/program.js",
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "babel ./src -d ./build",
     "electron": "electron ."
   },
   "keywords": [
@@ -21,6 +21,7 @@
   "license": "",
   "devDependencies": {
     "@babel/core": "latest",
+    "@babel/cli": "latest",
     "@babel/register": "latest",
     "@babel/preset-env": "latest",
     "@babel/preset-react": "latest",
