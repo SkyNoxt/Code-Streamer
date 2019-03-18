@@ -18,7 +18,7 @@ import { NodeFactory } from "./Node"
 import NetworkSocket from "./Nodes/NetworkSocket/NetworkSocket"
 import Viewport from "./Nodes/Viewport/Viewport"
 
-class Diagram extends DiagramWidget {
+/*class Diagram extends DiagramWidget {
 
 	componentDidMount() {
 		this.onKeyUpPointer = this.onKeyUp.bind(this);
@@ -43,7 +43,7 @@ class Diagram extends DiagramWidget {
 			window.focus();
 		}
 	}
-}
+}*/
 
 export default class Configuration extends React.Component {
 
@@ -63,14 +63,14 @@ export default class Configuration extends React.Component {
 
 		diagram.addAll(networkSocket, viewport);
 
-		this.render = () => <Diagram className="configuration" diagramEngine={this.engine} />;
+		this.render = () => <DiagramWidget className="configuration" diagramEngine={this.engine} />;
 	}
 
-	componentDidMount() {
+	/*componentDidMount() {
 		let node = document.createElement("div");
 		this.engine.canvas.appendChild(node);
 		this.engine.contextWrapper = node;
-	}
+	}*/
 
 	render() {
 		return null;

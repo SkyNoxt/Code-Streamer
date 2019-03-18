@@ -30,8 +30,8 @@ export default class Node extends DefaultNodeModel {
 	constructor(name, color, controls) {
 		super(name, color);
 		if (controls) {
-			if (!(controls.constructor in window.codeStreamer._components))
-				window.codeStreamer.registerComponent(controls.constructor, controls.constructor);
+			/*if (!(controls.constructor in window.codeStreamer._components))
+				window.codeStreamer.registerComponent(controls.constructor, controls.constructor);*/
 			this.controls = controls;
 		}
 	}
@@ -53,7 +53,7 @@ export default class Node extends DefaultNodeModel {
 			type: 'react-component',
 			title: this.controls.title,
 			component: this.controls.constructor,
-			props: { node: this }
+			props: { /* node: this */ }
 		};
 		window.codeStreamer.root.contentItems[0].addChild(controls);
 	}

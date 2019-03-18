@@ -16,9 +16,9 @@ export default class CodeStreamer extends React.Component {
 	constructor(props) {
 		super(props);
 		var codeStreamer = new GoldenLayout({
-			settings: {
+			/*settings: {
 				showPopoutIcon: false
-			},
+			},*/
 			content: [{
 				type: 'row',
 				content: [{
