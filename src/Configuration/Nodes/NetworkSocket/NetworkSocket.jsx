@@ -7,7 +7,7 @@ import { GUI } from 'dat.gui';
 
 import Node, { NodeWindow } from "../../Node"
 
-const dgram = window.require('electron').remote.require("dgram");
+const dgram = require('electron').remote.require("dgram");
 
 export default class NetworkSocket extends Node {
 
