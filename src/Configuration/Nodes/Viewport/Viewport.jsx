@@ -8,7 +8,7 @@ import OrbitControls from "./OrbitControls";
 import * as Stats from "stats.js";
 import "./Stats.css";
 
-import Node from "../../Node";
+import Node, { NodeWindow } from "../../Node"
 
 export default class Viewport extends Node {
 
@@ -27,14 +27,9 @@ export default class Viewport extends Node {
 	}
 }
 
-export class ViewportControls extends React.Component {
+export class ViewportControls extends NodeWindow {
 
 	title = "Viewport";
-
-	constructor(props) {
-		super(props);
-		document.body.prepend(document.getElementById("title-bar"));
-	}
 
 	componentWillMount() {
 		let stats = new Stats();

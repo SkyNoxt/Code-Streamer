@@ -58,3 +58,11 @@ export default class Node extends DefaultNodeModel {
 		window.codeStreamer.root.contentItems[0].addChild(controls);
 	}
 }
+
+export class NodeWindow extends React.Component {
+
+	constructor(props) {
+		super(props);
+		document.body.prepend(document.getElementById("title-bar"));
+	}
+}

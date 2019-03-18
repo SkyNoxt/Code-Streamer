@@ -5,7 +5,7 @@ import ReactDOM from "react-dom";
 import { GUI } from 'dat.gui';
 import "./GUI.css";
 
-import Node from "../../Node"
+import Node, { NodeWindow } from "../../Node"
 
 const dgram = window.require('electron').remote.require("dgram");
 
@@ -45,14 +45,9 @@ export default class NetworkSocket extends Node {
 	}
 }
 
-export class NetworkSocketControls extends React.Component {
+export class NetworkSocketControls extends NodeWindow {
 
 	title = "Network Socket";
-
-	constructor(props) {
-		super(props);
-		document.body.prepend(document.getElementById("title-bar"));
-	}
 
 	componentWillMount() {
 		this.node = this.props.node;
