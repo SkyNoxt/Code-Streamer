@@ -20,13 +20,14 @@
   "copyright": "© Copyright 2019 ArtemPix, all rights reserved.",
   "license": "",
   "devDependencies": {
-    "babel-register": "latest",
+    "@babel/core": "latest",
+    "@babel/register": "latest",
+    "@babel/preset-env": "latest",
+    "@babel/preset-react": "latest",
     "electron": "latest"
   },
   "dependencies": {
     "about-window": "latest",
-    "babel-preset-env": "latest",
-    "babel-preset-react": "latest",
     "dat.gui": "latest",
     "golden-layout": "latest",
     "jquery": "latest",
