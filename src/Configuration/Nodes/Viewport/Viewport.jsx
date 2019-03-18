@@ -29,7 +29,10 @@ export default class Viewport extends Node {
 
 export class ViewportControls extends NodeWindow {
 
-	title = "Viewport";
+	constructor(props) {
+		super(props);
+		title = "Viewport";
+	}
 
 	componentWillMount() {
 		let stats = new Stats();

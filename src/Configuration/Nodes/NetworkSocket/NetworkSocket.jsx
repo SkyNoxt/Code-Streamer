@@ -47,7 +47,10 @@ export default class NetworkSocket extends Node {
 
 export class NetworkSocketControls extends NodeWindow {
 
-	title = "Network Socket";
+	constructor(props) {
+		super(props);
+		title = "Network Socket";
+	}
 
 	componentWillMount() {
 		this.node = this.props.node;
