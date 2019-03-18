@@ -8,11 +8,6 @@ import {
 	DiagramWidget
 } from "storm-react-diagrams";
 
-import "storm-react-diagrams/dist/style.min.css"
-import "./Configuration.css"
-
-import "./react-contextmenu.css"
-
 import { NodeFactory } from "./Node"
 
 import NetworkSocket from "./Nodes/NetworkSocket/NetworkSocket"
@@ -64,6 +59,11 @@ export default class Configuration extends React.Component {
 		diagram.addAll(networkSocket, viewport);
 
 		this.render = () => <DiagramWidget className="configuration" diagramEngine={this.engine} />;
+	}
+
+	componentWillMount() {
+		document.head.insertAdjacentHTML("beforeend","<link rel=\"stylesheet\" href=\"../node_modules/storm-react-diagrams/dist/style.min.css\" />");
+		document.head.insertAdjacentHTML("beforeend","<link rel=\"stylesheet\" href=\"../src/Configuration/Configuration.css\" />");
 	}
 
 	/*componentDidMount() {

@@ -2,18 +2,18 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
-import GoldenLayout from "golden-layout";
-
-import "golden-layout/src/css/goldenlayout-base.css";
-import "golden-layout/src/css/goldenlayout-dark-theme.css";
+import $ from "jquery";
 
 import Configuration from "./Configuration/Configuration";
 
 import { NetworkSocketControls } from "./Configuration/Nodes/NetworkSocket/NetworkSocket"
 import { ViewportControls } from "./Configuration/Nodes/Viewport/Viewport"
 
+window.$ = $;
 window.React = React;
 window.ReactDOM = ReactDOM;
+
+const GoldenLayout = require("golden-layout");
 
 export default class CodeStreamer extends React.Component {
 	constructor(props) {
@@ -47,6 +47,9 @@ export default class CodeStreamer extends React.Component {
 		codeStreamer.init();
 
 		window.codeStreamer = codeStreamer;
+
+		document.head.insertAdjacentHTML("beforeend","<link rel=\"stylesheet\" href=\"../node_modules/golden-layout/src/css/goldenlayout-base.css\" />");
+		document.head.insertAdjacentHTML("beforeend","<link rel=\"stylesheet\" href=\"../node_modules/golden-layout/src/css/goldenlayout-dark-theme.css\" />");
 	}
 
 	render() {

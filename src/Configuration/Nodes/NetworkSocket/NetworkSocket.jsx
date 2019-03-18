@@ -3,7 +3,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 
 import { GUI } from 'dat.gui';
-import "./GUI.css";
+//import "./GUI.css";
 
 import Node, { NodeWindow } from "../../Node"
 
@@ -49,7 +49,7 @@ export class NetworkSocketControls extends NodeWindow {
 
 	constructor(props) {
 		super(props);
-		title = "Network Socket";
+		this.title = "Network Socket";
 	}
 
 	componentWillMount() {

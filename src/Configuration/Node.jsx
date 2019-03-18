@@ -12,7 +12,7 @@ export class NodeFactory extends DefaultNodeFactory {
 	generateReactWidget(diagramEngine, node) {
 		return (
 			<div className="node-wrapper" onDoubleClick={() => node.showControls()}>
-				<ContextMenuTrigger holdToDisplay="-1" id={node.id}>
+				<ContextMenuTrigger holdToDisplay={-1} id={node.id}>
 					<DefaultNodeWidget node={node} />
 				</ContextMenuTrigger>
 				{node.getContextMenu && diagramEngine.contextWrapper && ReactDOM.createPortal(node.getContextMenu(), diagramEngine.contextWrapper)}

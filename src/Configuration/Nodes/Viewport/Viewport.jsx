@@ -6,7 +6,7 @@ import * as THREE from "three";
 import OrbitControls from "./OrbitControls";
 
 import * as Stats from "stats.js";
-import "./Stats.css";
+//import "./Stats.css";
 
 import Node, { NodeWindow } from "../../Node"
 
@@ -31,7 +31,7 @@ export class ViewportControls extends NodeWindow {
 
 	constructor(props) {
 		super(props);
-		title = "Viewport";
+		this.title = "Viewport";
 	}
 
 	componentWillMount() {
