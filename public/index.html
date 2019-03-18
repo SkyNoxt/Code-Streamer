@@ -21,7 +21,7 @@
 </body>
 <script>
   require("@babel/register");
-  require(__dirname + "/../src/index.js");
+  require(require('electron').remote.app.getAppPath() + "/src/index.js");
 </script>
 
 </html>
