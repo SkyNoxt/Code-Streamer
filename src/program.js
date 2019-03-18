@@ -17,7 +17,10 @@ function createWindow() {
         width: 800,
         height: 600,
         frame: false,
-        icon: __dirname + '/../build/img/code-streamer.png'
+        icon: __dirname + '/../build/img/code-streamer.png',
+        webPreferences: {
+            nativeWindowOpen: true
+        }
     });
 
     // and load the index.html of the app.

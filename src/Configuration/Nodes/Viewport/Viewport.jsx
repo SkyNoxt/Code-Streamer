@@ -27,9 +27,14 @@ export default class Viewport extends Node {
 	}
 }
 
-class ViewportControls extends React.Component {
+export class ViewportControls extends React.Component {
 
 	title = "Viewport";
+
+	constructor(props) {
+		super(props);
+		document.body.prepend(document.getElementById("title-bar"));
+	}
 
 	componentWillMount() {
 		let stats = new Stats();

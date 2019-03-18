@@ -45,15 +45,20 @@ export default class NetworkSocket extends Node {
 	}
 }
 
-class NetworkSocketControls extends React.Component {
+export class NetworkSocketControls extends React.Component {
 
 	title = "Network Socket";
+
+	constructor(props) {
+		super(props);
+		document.body.prepend(document.getElementById("title-bar"));
+	}
 
 	componentWillMount() {
 		this.node = this.props.node;
 	}
 
-	componentDidMount() {
+	/*componentDidMount() {
 		const gui = new GUI({ hideable: false });
 
 		gui.add(this.node.options, 'protocol', { udp4: "udp4", udp6: "udp6" }).name("Protocol").onFinishChange(() => this.node.reconnect());
@@ -62,9 +67,9 @@ class NetworkSocketControls extends React.Component {
 
 		let DOMNode = ReactDOM.findDOMNode(this);
 		DOMNode.appendChild(gui.domElement);
-	}
+	}*/
 
 	render() {
-		return <div />;
+		return <div>asdasdasdadasasd</div>;
 	}
 }

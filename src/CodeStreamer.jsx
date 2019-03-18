@@ -9,6 +9,9 @@ import "golden-layout/src/css/goldenlayout-dark-theme.css";
 
 import Configuration from "./Configuration/Configuration";
 
+import { NetworkSocketControls } from "./Configuration/Nodes/NetworkSocket/NetworkSocket"
+import { ViewportControls } from "./Configuration/Nodes/Viewport/Viewport"
+
 window.React = React;
 window.ReactDOM = ReactDOM;
 
@@ -32,6 +35,8 @@ export default class CodeStreamer extends React.Component {
 		window.onresize = () => codeStreamer.updateSize();
 
 		codeStreamer.registerComponent('Configuration', Configuration);
+		codeStreamer.registerComponent("NetworkSocketControls", NetworkSocketControls);
+		codeStreamer.registerComponent("ViewportControls", ViewportControls);
 
 		codeStreamer.on('componentCreated', function (component) {
 			component.element.on("click", (event) => event.target.focus());

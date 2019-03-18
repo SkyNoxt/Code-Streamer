@@ -52,7 +52,7 @@ export default class Node extends DefaultNodeModel {
 		var controls = {
 			type: 'react-component',
 			title: this.controls.title,
-			component: this.controls.constructor,
+			component: "NetworkSocketControls",
 			props: { /* node: this */ }
 		};
 		window.codeStreamer.root.contentItems[0].addChild(controls);
