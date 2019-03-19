@@ -63,6 +63,9 @@ export class NodeWindow extends React.Component {
 
 	constructor(props) {
 		super(props);
+	}
+
+	componentDidMount() {
 		if (window.codeStreamer.isSubWindow) {
 			let aboutButton = document.getElementById("about-btn");
 			aboutButton.parentNode.removeChild(aboutButton);
@@ -79,6 +82,6 @@ export class NodeWindow extends React.Component {
 	}
 
 	containerResize(event, container) {
-		
+
 	}
 }
