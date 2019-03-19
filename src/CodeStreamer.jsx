@@ -15,9 +15,8 @@ window.ReactDOM = ReactDOM;
 
 const GoldenLayout = require("golden-layout");
 
-export default class CodeStreamer extends React.Component {
-	constructor(props) {
-		super(props);
+export default class CodeStreamer {
+	constructor() {
 		var codeStreamer = new GoldenLayout({
 			content: [{
 				type: 'row',
@@ -47,9 +46,5 @@ export default class CodeStreamer extends React.Component {
 
 		document.head.insertAdjacentHTML("beforeend","<link rel=\"stylesheet\" href=\"../node_modules/golden-layout/src/css/goldenlayout-base.css\" />");
 		document.head.insertAdjacentHTML("beforeend","<link rel=\"stylesheet\" href=\"../node_modules/golden-layout/src/css/goldenlayout-dark-theme.css\" />");
-	}
-
-	render() {
-		return null;
 	}
 }

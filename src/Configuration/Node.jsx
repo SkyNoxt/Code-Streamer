@@ -53,7 +53,7 @@ export default class Node extends DefaultNodeModel {
 			type: 'react-component',
 			title: this.controls.title,
 			component: "NetworkSocketControls",
-			props: { /* node: this */ }
+			props: { node: this.id }
 		};
 		window.codeStreamer.root.contentItems[0].addChild(controls);
 	}
@@ -63,6 +63,10 @@ export class NodeWindow extends React.Component {
 
 	constructor(props) {
 		super(props);
-		document.body.prepend(document.getElementById("title-bar"));
+		if (window.codeStreamer.isSubWindow) {
+			let aboutButton = document.getElementById("about-btn");
+			aboutButton.parentNode.removeChild(aboutButton);
+			document.body.prepend(document.getElementById("title-bar"));
+		}
 	}
 }
