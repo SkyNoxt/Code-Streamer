@@ -1,7 +1,7 @@
 
 import CodeStreamer from "./CodeStreamer";
 
-const remote = require('electron').remote;
+import { remote } from "electron";
 
 const browserWindow = remote.getCurrentWindow();
 const openAboutWindow = remote.require("about-window").default;

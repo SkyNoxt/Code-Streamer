@@ -69,4 +69,16 @@ export class NodeWindow extends React.Component {
 			document.body.prepend(document.getElementById("title-bar"));
 		}
 	}
+
+	elementClick(event, element) {
+		event.target.focus()
+	}
+
+	containerOpen(event, container) {
+
+	}
+
+	containerResize(event, container) {
+		
+	}
 }

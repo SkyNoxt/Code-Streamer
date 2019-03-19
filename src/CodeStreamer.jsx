@@ -35,9 +35,9 @@ export default class CodeStreamer {
 		codeStreamer.registerComponent("ViewportControls", ViewportControls);
 
 		codeStreamer.on('componentCreated', function (component) {
-			component.element.on("click", (event) => event.target.focus());
-			component.container.on('resize', () => component.instance._reactComponent.componentResize && component.instance._reactComponent.componentResize(component.container));
-			component.container.on('open', () => component.instance._reactComponent.componentOpen && component.instance._reactComponent.componentOpen(component.container));
+			component.element.on("click", (event) => component.instance._reactComponent.elementClick(event, component.element));
+			component.container.on('resize', (event) => component.instance._reactComponent.containerResize(event, component.container));
+			component.container.on('open', (event) => component.instance._reactComponent.containerOpen(event, component.container));
 		});
 
 		codeStreamer.init();

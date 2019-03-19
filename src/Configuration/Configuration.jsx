@@ -8,7 +8,7 @@ import {
 	DiagramWidget
 } from "storm-react-diagrams";
 
-import { NodeFactory } from "./Node"
+import { NodeFactory, NodeWindow } from "./Node"
 
 import NetworkSocket from "./Nodes/NetworkSocket/NetworkSocket"
 import Viewport from "./Nodes/Viewport/Viewport"
@@ -40,7 +40,7 @@ import Viewport from "./Nodes/Viewport/Viewport"
 	}
 }*/
 
-export default class Configuration extends React.Component {
+export default class Configuration extends NodeWindow {
 
 	constructor(props) {
 		super(props);
