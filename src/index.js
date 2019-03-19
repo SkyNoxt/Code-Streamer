@@ -1,5 +1,5 @@
 
-import CodeStreamer from "../src/CodeStreamer";
+import CodeStreamer from "./CodeStreamer";
 
 const remote = require('electron').remote;
 
@@ -15,16 +15,15 @@ function init() {
 			this.innerText = '?';
 		}
 		else {
-			let appPath = remote.app.getAppPath();
 			aboutWindow = openAboutWindow({
-				icon_path: appPath + "/public/img/code-streamer.png",
+				icon_path: window.appPath + "/src/img/code-streamer.png",
 				product_name: "Code Streamer",
 				bug_report_url: "https://www.artempix.net",
 				bug_link_text: "artempix.net",
 				copyright: "© Copyright 2018 ArtemPix, all rights reserved.",
 				description: "Flow Based Programming Framework",
 				win_options: { parent: browserWindow, frame: false, resizable: false, skipTaskbar: true },
-				css_path: appPath + "/public/index.css",
+				css_path: window.appPath + "/src/index.css",
 				use_version_info: true
 			});
 			this.innerText = '¿';
@@ -53,6 +52,5 @@ document.onreadystatechange = function () {
 		init();
 	}
 };
-
 
 new CodeStreamer();

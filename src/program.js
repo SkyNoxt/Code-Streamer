@@ -17,7 +17,7 @@ function createWindow() {
         width: 800,
         height: 600,
         frame: false,
-        icon: __dirname + '/../public/img/code-streamer.png',
+        icon: __dirname + '/img/code-streamer.png',
         webPreferences: {
             nativeWindowOpen: true
         }
@@ -25,7 +25,7 @@ function createWindow() {
 
     // and load the index.html of the app.
     const startUrl = process.env.ELECTRON_START_URL || url.format({
-        pathname: __dirname + '/../public/index.html',
+        pathname: __dirname + '/index.html',
         protocol: 'file:',
         slashes: true
     });
