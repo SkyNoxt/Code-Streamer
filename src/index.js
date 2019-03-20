@@ -8,7 +8,7 @@ const openAboutWindow = remote.require("about-window").default;
 
 function init() {
 	let aboutWindow = null;
-	document.getElementById("about-btn").addEventListener("click", function (e) {
+	document.getElementById("aboutButton").addEventListener("click", function (e) {
 		if (aboutWindow) {
 			aboutWindow.close();
 			aboutWindow = null;
@@ -30,11 +30,11 @@ function init() {
 		}
 	});
 
-	document.getElementById("min-btn").addEventListener("click", function (e) {
+	document.getElementById("minimizeButton").addEventListener("click", function (e) {
 		browserWindow.minimize();
 	});
 
-	document.getElementById("max-btn").addEventListener("click", function (e) {
+	document.getElementById("maximizeButton").addEventListener("click", function (e) {
 		if (!browserWindow.isMaximized()) {
 			browserWindow.maximize();
 		} else {
@@ -42,7 +42,7 @@ function init() {
 		}
 	});
 
-	document.getElementById("close-btn").addEventListener("click", function (e) {
+	document.getElementById("closeButton").addEventListener("click", function (e) {
 		browserWindow.close();
 	});
 };

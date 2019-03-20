@@ -14,7 +14,7 @@ body {
 	overflow: hidden;
 }
 
-#title-bar {
+#titleBar {
 	-webkit-app-region: drag;
 	height: 32px;
 	padding: 0px;
@@ -31,14 +31,14 @@ body {
 	font-size: 14px;
 }
 
-#title-bar-btns {
+#titleBarButtons {
 	-webkit-app-region: no-drag;
 	position: fixed;
 	top: 1px;
 	right: 0px;
 }
 
-#title-bar-btns button {
+#titleBarButtons button {
 	height: 32px;
 	width: 32px;
 	background-color: transparent;
@@ -47,7 +47,7 @@ body {
 	font-size: 16px;
 }
 
-#title-bar-btns button:hover {
+#titleBarButtons button:hover {
 	background-color: #3F3F41;
 }
 

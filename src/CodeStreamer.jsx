@@ -17,6 +17,9 @@ const GoldenLayout = require("golden-layout");
 
 export default class CodeStreamer {
 	constructor() {
+
+		ReactDOM.render(<TitleBar />, document.getElementById("titleBar"));
+
 		var codeStreamer = new GoldenLayout({
 			content: [{
 				type: 'row',
@@ -44,7 +47,24 @@ export default class CodeStreamer {
 
 		window.codeStreamer = codeStreamer;
 
-		document.head.insertAdjacentHTML("beforeend","<link rel=\"stylesheet\" href=\"../node_modules/golden-layout/src/css/goldenlayout-base.css\" />");
-		document.head.insertAdjacentHTML("beforeend","<link rel=\"stylesheet\" href=\"../node_modules/golden-layout/src/css/goldenlayout-dark-theme.css\" />");
+		document.head.insertAdjacentHTML("beforeend", "<link rel=\"stylesheet\" href=\"../node_modules/golden-layout/src/css/goldenlayout-base.css\" />");
+		document.head.insertAdjacentHTML("beforeend", "<link rel=\"stylesheet\" href=\"../node_modules/golden-layout/src/css/goldenlayout-dark-theme.css\" />");
+	}
+}
+
+export class TitleBar extends React.Component {
+
+	render() {
+		return (
+			<React.Fragment>
+				<div id="title">Code Streamer</div>
+				<div id="titleBarButtons">
+					<button id="aboutButton">?</button>
+					<button id="minimizeButton">-</button>
+					<button id="maximizeButton">+</button>
+					<button id="closeButton">x</button>
+				</div>
+			</React.Fragment>
+		);
 	}
 }

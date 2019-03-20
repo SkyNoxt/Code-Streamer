@@ -66,11 +66,11 @@ export class NodeWindow extends React.Component {
 	}
 
 	componentDidMount() {
-		if (window.codeStreamer.isSubWindow) {
+		/*if (window.codeStreamer.isSubWindow) {
 			let aboutButton = document.getElementById("about-btn");
 			aboutButton.parentNode.removeChild(aboutButton);
 			document.body.prepend(document.getElementById("title-bar"));
-		}
+		}*/
 	}
 
 	elementClick(event, element) {
