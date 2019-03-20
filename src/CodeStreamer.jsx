@@ -1,4 +1,6 @@
 
+import { remote } from "electron";
+
 import React from "react";
 import ReactDOM from "react-dom";
 
@@ -54,15 +56,19 @@ export default class CodeStreamer {
 
 export class TitleBar extends React.Component {
 
+	componentWillMount() {
+		this.setState({ window: remote.getCurrentWindow() })
+	}
+
 	render() {
 		return (
 			<React.Fragment>
 				<div id="title">Code Streamer</div>
 				<div id="titleBarButtons">
-					<button id="aboutButton">?</button>
-					<button id="minimizeButton">-</button>
-					<button id="maximizeButton">+</button>
-					<button id="closeButton">x</button>
+					<button>?</button>
+					<button onClick={() => this.state.window.minimize()}>-</button>
+					<button onClick={() => this.state.window.isMaximized() ? this.state.window.unmaximize() : this.state.window.maximize()}>+</button>
+					<button onClick={() => this.state.window.close()}>x</button>
 				</div>
 			</React.Fragment>
 		);

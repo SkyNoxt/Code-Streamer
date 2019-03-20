@@ -29,22 +29,6 @@ function init() {
 			this.innerText = '¿';
 		}
 	});
-
-	document.getElementById("minimizeButton").addEventListener("click", function (e) {
-		browserWindow.minimize();
-	});
-
-	document.getElementById("maximizeButton").addEventListener("click", function (e) {
-		if (!browserWindow.isMaximized()) {
-			browserWindow.maximize();
-		} else {
-			browserWindow.unmaximize();
-		}
-	});
-
-	document.getElementById("closeButton").addEventListener("click", function (e) {
-		browserWindow.close();
-	});
 };
 
 document.onreadystatechange = function () {
