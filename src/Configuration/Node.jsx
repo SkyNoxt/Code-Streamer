@@ -11,7 +11,7 @@ export class NodeFactory extends DefaultNodeFactory {
 
 	generateReactWidget(diagramEngine, node) {
 		return (
-			<div className="node-wrapper" onDoubleClick={() => node.showControls()}>
+			<div className="node-wrapper" onDoubleClick={() => node.controls.detach()}>
 				<ContextMenuTrigger holdToDisplay={-1} id={node.id}>
 					<DefaultNodeWidget node={node} />
 				</ContextMenuTrigger>
@@ -33,6 +33,7 @@ export default class Node extends DefaultNodeModel {
 			/*if (!(controls.constructor in window.codeStreamer._components))
 				window.codeStreamer.registerComponent(controls.constructor, controls.constructor);*/
 			this.controls = controls;
+			this.controls.node = this;
 		}
 	}
 
@@ -43,26 +44,22 @@ export default class Node extends DefaultNodeModel {
 	addInPort(label, linkCallback, sampleCallback) {
 		return this.addPort(new Port(true, label, linkCallback, sampleCallback));
 	}
-
-	showControls() {
-		if (!this.controls) {
-			alert("No controls in node!");
-			return;
-		}
-		var controls = {
-			type: 'react-component',
-			title: this.controls.title,
-			component: "NetworkSocketControls",
-			props: { node: this.id }
-		};
-		window.codeStreamer.root.contentItems[0].addChild(controls);
-	}
 }
 
 export class NodeWindow extends React.Component {
 
 	constructor(props) {
 		super(props);
+	}
+
+	detach() {
+		var component = {
+			type: 'react-component',
+			title: this.node.name,
+			component: "NetworkSocketControls",
+			props: { node: this.node }
+		};
+		window.codeStreamer.root.contentItems[0].addChild(component);
 	}
 
 	componentDidMount() {

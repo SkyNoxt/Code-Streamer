@@ -29,11 +29,6 @@ export default class Viewport extends Node {
 
 export class ViewportControls extends NodeWindow {
 
-	constructor(props) {
-		super(props);
-		this.title = "Viewport";
-	}
-
 	componentWillMount() {
 		let stats = new Stats();
 		stats.dom.className = "stats";
