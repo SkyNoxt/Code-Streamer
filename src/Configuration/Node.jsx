@@ -30,8 +30,6 @@ export default class Node extends DefaultNodeModel {
 	constructor(name, color, controls) {
 		super(name, color);
 		if (controls) {
-			/*if (!(controls.constructor in window.codeStreamer._components))
-				window.codeStreamer.registerComponent(controls.constructor, controls.constructor);*/
 			this.controls = controls;
 			this.controls.node = this;
 		}
@@ -56,7 +54,7 @@ export class NodeWindow extends React.Component {
 		var component = {
 			type: 'react-component',
 			title: this.node.name,
-			component: "NetworkSocketControls",
+			component: this.constructor.name,
 			props: { node: this.node }
 		};
 		window.codeStreamer.root.contentItems[0].addChild(component);

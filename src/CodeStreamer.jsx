@@ -35,9 +35,9 @@ export default class CodeStreamer {
 
 		window.onresize = () => codeStreamer.updateSize();
 
-		codeStreamer.registerComponent('Configuration', Configuration);
-		codeStreamer.registerComponent("NetworkSocketControls", NetworkSocketControls);
-		codeStreamer.registerComponent("ViewportControls", ViewportControls);
+		codeStreamer.registerComponent(Configuration.name, Configuration);
+		codeStreamer.registerComponent(NetworkSocketControls.name, NetworkSocketControls);
+		codeStreamer.registerComponent(ViewportControls.name, ViewportControls);
 
 		codeStreamer.on('componentCreated', function (component) {
 			component.element.on("click", (event) => component.instance._reactComponent.elementClick(event, component.element));
