@@ -51,7 +51,7 @@ export class NetworkSocketControls extends NodeWindow {
 		this.node = this.props.node;
 	}
 
-	/*componentDidMount() {
+	componentDidMount() {
 		const gui = new GUI({ hideable: false });
 
 		gui.add(this.node.options, 'protocol', { udp4: "udp4", udp6: "udp6" }).name("Protocol").onFinishChange(() => this.node.reconnect());
@@ -60,9 +60,9 @@ export class NetworkSocketControls extends NodeWindow {
 
 		let DOMNode = ReactDOM.findDOMNode(this);
 		DOMNode.appendChild(gui.domElement);
-	}*/
+	}
 
 	render() {
-		return <div>asdasdasdadasasd</div>;
+		return <div />;
 	}
 }

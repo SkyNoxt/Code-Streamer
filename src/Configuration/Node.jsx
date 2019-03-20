@@ -52,10 +52,10 @@ export class NodeWindow extends React.Component {
 
 	detach() {
 		var component = {
-			type: 'react-component',
+			type: "react-component",
 			title: this.node.name,
 			component: this.constructor.name,
-			props: { node: this.node }
+			props: { node: this.node.id }
 		};
 		window.codeStreamer.root.contentItems[0].addChild(component);
 	}
