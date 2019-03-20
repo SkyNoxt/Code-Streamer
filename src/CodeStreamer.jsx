@@ -20,7 +20,7 @@ const GoldenLayout = require("golden-layout");
 export default class CodeStreamer {
 	constructor() {
 
-		ReactDOM.render(<TitleBar />, document.getElementById("titleBar"));
+		ReactDOM.render(<CodeStreamerTitleBar />, document.getElementById("titleBar"));
 
 		var codeStreamer = new GoldenLayout({
 			content: [{
@@ -54,21 +54,53 @@ export default class CodeStreamer {
 	}
 }
 
-export class TitleBar extends React.Component {
+class CodeStreamerTitleBar extends React.Component {
+
+	about() {
+		if (this.state.about) {
+			this.state.about.close();
+			this.state.about = null;
+		}
+		else
+			this.setState({
+				about: remote.require("about-window").default({
+					icon_path: window.appPath + "/src/img/code-streamer.png",
+					product_name: "Code Streamer",
+					bug_report_url: "https://www.artempix.net",
+					bug_link_text: "artempix.net",
+					copyright: "© Copyright 2018 ArtemPix, all rights reserved.",
+					description: "Flow Based Programming Framework",
+					win_options: { parent: this.state.window, frame: false, resizable: false, skipTaskbar: true },
+					css_path: window.appPath + "/src/index.css",
+					use_version_info: true
+				})
+			});
+	}
 
 	componentWillMount() {
-		this.setState({ window: remote.getCurrentWindow() })
+		this.setState({ window: remote.getCurrentWindow(), about: null });
 	}
 
 	render() {
 		return (
+			<TitleBar window={this.state.window} title="Code Streamer">
+				<button onClick={() => this.about()}>?</button>
+			</TitleBar>
+		);
+	}
+}
+
+class TitleBar extends React.Component {
+
+	render() {
+		return (
 			<React.Fragment>
-				<div id="title">Code Streamer</div>
+				<div id="titleBarTitle">{this.props.title}</div>
 				<div id="titleBarButtons">
-					<button>?</button>
-					<button onClick={() => this.state.window.minimize()}>-</button>
-					<button onClick={() => this.state.window.isMaximized() ? this.state.window.unmaximize() : this.state.window.maximize()}>+</button>
-					<button onClick={() => this.state.window.close()}>x</button>
+					{this.props.children}
+					<button onClick={() => this.props.window.minimize()}>-</button>
+					<button onClick={() => this.props.window.isMaximized() ? this.props.window.unmaximize() : this.props.window.maximize()}>+</button>
+					<button onClick={() => this.props.window.close()}>x</button>
 				</div>
 			</React.Fragment>
 		);

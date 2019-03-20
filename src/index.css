@@ -23,7 +23,7 @@ body {
 	font-family: sans-serif;
 }
 
-#title {
+#titleBarTitle {
 	position: fixed;
 	top: 0px;
 	left: 12px;
