@@ -10,8 +10,7 @@ import {
 
 import { NodeFactory, NodeWindow } from "./Node"
 
-import NetworkSocket from "./Nodes/NetworkSocket/NetworkSocket"
-import Viewport from "./Nodes/Viewport/Viewport"
+import CustomCode from "./Nodes/CustomCode/CustomCode"
 
 /*class Diagram extends DiagramWidget {
 
@@ -53,10 +52,9 @@ export default class Configuration extends NodeWindow {
 
 		this.engine.setDiagramModel(diagram);
 
-		let networkSocket = new NetworkSocket();
-		let viewport = new Viewport();
+		let customCode = new CustomCode();
 
-		diagram.addAll(networkSocket, viewport);
+		diagram.addAll(customCode);
 
 		this.render = () => <DiagramWidget className="configuration" diagramEngine={this.engine} />;
 	}

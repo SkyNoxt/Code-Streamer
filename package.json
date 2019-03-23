@@ -28,6 +28,7 @@
   },
   "dependencies": {
     "about-window": "latest",
+    "codemirror": "latest",
     "dat.gui": "latest",
     "golden-layout": "latest",
     "jquery": "latest",

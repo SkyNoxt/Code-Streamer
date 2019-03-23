@@ -8,8 +8,7 @@ import $ from "jquery";
 
 import Configuration from "./Configuration/Configuration";
 
-import { NetworkSocketControls } from "./Configuration/Nodes/NetworkSocket/NetworkSocket"
-import { ViewportControls } from "./Configuration/Nodes/Viewport/Viewport"
+import { CustomCodeControls } from "./Configuration/Nodes/CustomCode/CustomCode"
 
 window.$ = $;
 window.React = React;
@@ -36,8 +35,7 @@ export default class CodeStreamer {
 		window.onresize = () => codeStreamer.updateSize();
 
 		codeStreamer.registerComponent(Configuration.name, Configuration);
-		codeStreamer.registerComponent(NetworkSocketControls.name, NetworkSocketControls);
-		codeStreamer.registerComponent(ViewportControls.name, ViewportControls);
+		codeStreamer.registerComponent(CustomCodeControls.name, CustomCodeControls);
 
 		codeStreamer.on("componentCreated", function (component) {
 			component.element.on("click", (event) => component.instance._reactComponent.elementClick(event, component.element));
