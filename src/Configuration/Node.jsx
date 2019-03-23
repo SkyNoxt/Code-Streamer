@@ -11,7 +11,7 @@ export class NodeFactory extends DefaultNodeFactory {
 
 	generateReactWidget(diagramEngine, node) {
 		return (
-			<div className="node-wrapper" onDoubleClick={() => node.controls.detach()}>
+			<div className="node-wrapper" onDoubleClick={() => node.controls.show()}>
 				<ContextMenuTrigger holdToDisplay={-1} id={node.id}>
 					<DefaultNodeWidget node={node} />
 				</ContextMenuTrigger>
@@ -50,7 +50,7 @@ export class NodeWindow extends React.Component {
 		super(props);
 	}
 
-	detach() {
+	show() {
 		var component = {
 			type: "react-component",
 			title: this.node.name,

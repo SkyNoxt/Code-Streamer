@@ -1,24 +1,17 @@
 
 import { remote } from "electron";
 
-import React from "react";
-import ReactDOM from "react-dom";
-
-import $ from "jquery";
-
 import Configuration from "./Configuration/Configuration";
-
 import { CustomCodeControls } from "./Configuration/Nodes/CustomCode/CustomCode"
 
-window.$ = $;
-window.React = React;
-window.ReactDOM = ReactDOM;
+window.$ = require("jquery");
+window.React = require("react");
+window.ReactDOM = require("react-dom");
 
 const GoldenLayout = require("golden-layout");
 
 export default class CodeStreamer {
 	constructor() {
-
 		ReactDOM.render(<CodeStreamerTitleBar />, document.getElementById("titleBar"));
 
 		var codeStreamer = new GoldenLayout({
@@ -44,7 +37,6 @@ export default class CodeStreamer {
 		});
 
 		codeStreamer.init();
-
 		window.codeStreamer = codeStreamer;
 
 		document.head.insertAdjacentHTML("beforeend", "<link rel=\"stylesheet\" href=\"../node_modules/golden-layout/src/css/goldenlayout-base.css\" />");
