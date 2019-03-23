@@ -8,12 +8,12 @@
 </head>
 
 <body>
-  <div id="titleBar" />
-  <div id="CodeStreamer" />
+  <div id="titleBar"></div>
+  <div id="CodeStreamer"></div>
 </body>
 <script>
   require("@babel/register");
-  window.appPath = require('electron').remote.app.getAppPath();
+  window.appPath = require("electron").remote.app.getAppPath();
   require(appPath + "/src/index.js");
 </script>
 

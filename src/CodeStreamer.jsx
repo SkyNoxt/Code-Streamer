@@ -24,14 +24,14 @@ export default class CodeStreamer {
 
 		var codeStreamer = new GoldenLayout({
 			content: [{
-				type: 'row',
+				type: "row",
 				content: [{
-					type: 'react-component',
+					type: "react-component",
 					title: "Configuration",
-					component: 'Configuration'
+					component: "Configuration"
 				}]
 			}]
-		}, document.getElementById('CodeStreamer'));
+		}, document.getElementById("CodeStreamer"));
 
 		window.onresize = () => codeStreamer.updateSize();
 
@@ -39,10 +39,10 @@ export default class CodeStreamer {
 		codeStreamer.registerComponent(NetworkSocketControls.name, NetworkSocketControls);
 		codeStreamer.registerComponent(ViewportControls.name, ViewportControls);
 
-		codeStreamer.on('componentCreated', function (component) {
+		codeStreamer.on("componentCreated", function (component) {
 			component.element.on("click", (event) => component.instance._reactComponent.elementClick(event, component.element));
-			component.container.on('resize', (event) => component.instance._reactComponent.containerResize(event, component.container));
-			component.container.on('open', (event) => component.instance._reactComponent.containerOpen(event, component.container));
+			component.container.on("resize", (event) => component.instance._reactComponent.containerResize(event, component.container));
+			component.container.on("open", (event) => component.instance._reactComponent.containerOpen(event, component.container));
 		});
 
 		codeStreamer.init();
