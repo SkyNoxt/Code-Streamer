@@ -2,6 +2,8 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
+import { Item } from 'react-contexify';
+
 import Node, { NodeWindow } from "../../Node"
 
 import CodeMirror from "codemirror";
@@ -11,6 +13,16 @@ export default class CustomCode extends Node {
 
 	constructor() {
 		super("Custom Code", "#ffffffff", new CustomCodeControls());
+	}
+
+	contextOptions() {
+		return (
+			<React.Fragment>
+				<Item onClick={() => this.controls.show()} >
+					Open Code Editor
+				</Item>
+			</React.Fragment>
+		);
 	}
 }
 

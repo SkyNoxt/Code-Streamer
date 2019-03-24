@@ -5,13 +5,13 @@ import ReactDOM from "react-dom";
 import { DefaultNodeFactory, DefaultNodeModel, DefaultNodeWidget } from "storm-react-diagrams";
 import Port from "./Port";
 
-import { Menu, Item, Separator, Submenu, MenuProvider } from 'react-contexify';
+import { Menu, MenuProvider } from 'react-contexify';
 
 export class NodeFactory extends DefaultNodeFactory {
 
 	generateReactWidget(diagramEngine, node) {
 		return (
-			<div className="node-wrapper" onDoubleClick={() => node.controls.show()}>
+			<div className="node-wrapper">
 				<MenuProvider id={node.id}>
 					<DefaultNodeWidget node={node} />
 				</MenuProvider>
@@ -48,23 +48,6 @@ export default class Node extends DefaultNodeModel {
 			<Menu id={this.id}>
 				{this.contextOptions()}
 			</Menu>
-		);
-	}
-
-	contextOptions() {
-		return (
-			<React.Fragment>
-				<Item data={{ foo: 'bar' }} >
-					ContextMenu Item 1
-				</Item>
-				<Item data={{ foo: 'bar' }} >
-					ContextMenu Item 2
-				</Item>
-				<Separator />
-				<Item data={{ foo: 'bar' }} >
-					ContextMenu Item 3
-				</Item>
-			</React.Fragment>
 		);
 	}
 }
