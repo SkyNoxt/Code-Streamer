@@ -5,7 +5,7 @@ import ReactDOM from "react-dom";
 import { DefaultNodeFactory, DefaultNodeModel, DefaultNodeWidget } from "storm-react-diagrams";
 import Port from "./Port";
 
-import { ContextMenuTrigger } from "react-contextmenu";
+import { ContextMenuTrigger, ContextMenu, MenuItem } from "react-contextmenu";
 
 export class NodeFactory extends DefaultNodeFactory {
 
@@ -15,7 +15,7 @@ export class NodeFactory extends DefaultNodeFactory {
 				<ContextMenuTrigger holdToDisplay={-1} id={node.id}>
 					<DefaultNodeWidget node={node} />
 				</ContextMenuTrigger>
-				{node.getContextMenu && diagramEngine.contextWrapper && ReactDOM.createPortal(node.getContextMenu(), diagramEngine.contextWrapper)}
+				{diagramEngine.contextWrapper && ReactDOM.createPortal(node.contextMenu(), diagramEngine.contextWrapper)}
 			</div>
 		);
 	}
@@ -41,6 +41,31 @@ export default class Node extends DefaultNodeModel {
 
 	addInPort(label, linkCallback, sampleCallback) {
 		return this.addPort(new Port(true, label, linkCallback, sampleCallback));
+	}
+
+	contextMenu() {
+		return (
+			<ContextMenu id={this.id}>
+				{this.contextOptions()}
+			</ContextMenu>
+		);
+	}
+
+	contextOptions() {
+		return (
+			<React.Fragment>
+				<MenuItem data={{ foo: 'bar' }} >
+					ContextMenu Item 1
+				</MenuItem>
+				<MenuItem data={{ foo: 'bar' }} >
+					ContextMenu Item 2
+				</MenuItem>
+				<MenuItem divider />
+				<MenuItem data={{ foo: 'bar' }} >
+					ContextMenu Item 3
+				</MenuItem>
+			</React.Fragment>
+		);
 	}
 }
 

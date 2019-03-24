@@ -12,6 +12,8 @@ import { NodeFactory, NodeWindow } from "./Node"
 
 import CustomCode from "./Nodes/CustomCode/CustomCode"
 
+import { ContextMenuTrigger, ContextMenu, MenuItem } from "react-contextmenu";
+
 /*class Diagram extends DiagramWidget {
 
 	componentDidMount() {
@@ -56,19 +58,51 @@ export default class Configuration extends NodeWindow {
 
 		diagram.addAll(customCode);
 
-		this.render = () => <DiagramWidget className="configuration" diagramEngine={this.engine} />;
+		this.render = () => (
+			<React.Fragment>
+				<ContextMenuTrigger holdToDisplay={-1} id="Configuration222" style={{height: "100%"}}>
+					<DiagramWidget className="configuration" diagramEngine={this.engine} />
+				</ContextMenuTrigger>
+				{this.contextMenu()}
+			</React.Fragment>
+		);
+	}
+
+	contextMenu() {
+		return (
+			<ContextMenu id="Configuration222">
+				{this.contextOptions()}
+			</ContextMenu>
+		);
+	}
+
+	contextOptions() {
+		return (
+			<React.Fragment>
+				<MenuItem data={{ foo: 'bar' }} >
+					ContextMenu Item 7
+				</MenuItem>
+				<MenuItem data={{ foo: 'bar' }} >
+					ContextMenu Item 8
+				</MenuItem>
+				<MenuItem divider />
+				<MenuItem data={{ foo: 'bar' }} >
+					ContextMenu Item 9
+				</MenuItem>
+			</React.Fragment>
+		);
 	}
 
 	componentWillMount() {
-		document.head.insertAdjacentHTML("beforeend","<link rel=\"stylesheet\" href=\"../node_modules/storm-react-diagrams/dist/style.min.css\" />");
-		document.head.insertAdjacentHTML("beforeend","<link rel=\"stylesheet\" href=\"./Configuration/Configuration.css\" />");
+		document.head.insertAdjacentHTML("beforeend", "<link rel=\"stylesheet\" href=\"../node_modules/storm-react-diagrams/dist/style.min.css\" />");
+		document.head.insertAdjacentHTML("beforeend", "<link rel=\"stylesheet\" href=\"./Configuration/Configuration.css\" />");
 	}
 
-	/*componentDidMount() {
+	componentDidMount() {
 		let node = document.createElement("div");
 		this.engine.canvas.appendChild(node);
 		this.engine.contextWrapper = node;
-	}*/
+	}
 
 	render() {
 		return null;
