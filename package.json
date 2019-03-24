@@ -33,7 +33,7 @@
     "golden-layout": "latest",
     "jquery": "latest",
     "react": "latest",
-    "react-contextmenu": "latest",
+    "react-contexify": "latest",
     "react-dom": "latest",
     "stats.js": "latest",
     "storm-react-diagrams": "latest",

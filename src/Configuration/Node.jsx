@@ -5,16 +5,16 @@ import ReactDOM from "react-dom";
 import { DefaultNodeFactory, DefaultNodeModel, DefaultNodeWidget } from "storm-react-diagrams";
 import Port from "./Port";
 
-import { ContextMenuTrigger, ContextMenu, MenuItem } from "react-contextmenu";
+import { Menu, Item, Separator, Submenu, MenuProvider } from 'react-contexify';
 
 export class NodeFactory extends DefaultNodeFactory {
 
 	generateReactWidget(diagramEngine, node) {
 		return (
 			<div className="node-wrapper" onDoubleClick={() => node.controls.show()}>
-				<ContextMenuTrigger holdToDisplay={-1} id={node.id}>
+				<MenuProvider id={node.id}>
 					<DefaultNodeWidget node={node} />
-				</ContextMenuTrigger>
+				</MenuProvider>
 				{diagramEngine.contextWrapper && ReactDOM.createPortal(node.contextMenu(), diagramEngine.contextWrapper)}
 			</div>
 		);
@@ -45,25 +45,25 @@ export default class Node extends DefaultNodeModel {
 
 	contextMenu() {
 		return (
-			<ContextMenu id={this.id}>
+			<Menu id={this.id}>
 				{this.contextOptions()}
-			</ContextMenu>
+			</Menu>
 		);
 	}
 
 	contextOptions() {
 		return (
 			<React.Fragment>
-				<MenuItem data={{ foo: 'bar' }} >
+				<Item data={{ foo: 'bar' }} >
 					ContextMenu Item 1
-				</MenuItem>
-				<MenuItem data={{ foo: 'bar' }} >
+				</Item>
+				<Item data={{ foo: 'bar' }} >
 					ContextMenu Item 2
-				</MenuItem>
-				<MenuItem divider />
-				<MenuItem data={{ foo: 'bar' }} >
+				</Item>
+				<Separator />
+				<Item data={{ foo: 'bar' }} >
 					ContextMenu Item 3
-				</MenuItem>
+				</Item>
 			</React.Fragment>
 		);
 	}

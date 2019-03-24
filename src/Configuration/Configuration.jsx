@@ -12,7 +12,7 @@ import { NodeFactory, NodeWindow } from "./Node"
 
 import CustomCode from "./Nodes/CustomCode/CustomCode"
 
-import { ContextMenuTrigger, ContextMenu, MenuItem } from "react-contextmenu";
+import { Menu, Item, Separator, Submenu, MenuProvider } from 'react-contexify';
 
 /*class Diagram extends DiagramWidget {
 
@@ -60,9 +60,9 @@ export default class Configuration extends NodeWindow {
 
 		this.render = () => (
 			<React.Fragment>
-				<ContextMenuTrigger holdToDisplay={-1} id="Configuration222" style={{height: "100%"}}>
+				<MenuProvider id="Configuration222" style={{height: "100%"}}>
 					<DiagramWidget className="configuration" diagramEngine={this.engine} />
-				</ContextMenuTrigger>
+				</MenuProvider>
 				{this.contextMenu()}
 			</React.Fragment>
 		);
@@ -70,31 +70,32 @@ export default class Configuration extends NodeWindow {
 
 	contextMenu() {
 		return (
-			<ContextMenu id="Configuration222">
+			<Menu id="Configuration222">
 				{this.contextOptions()}
-			</ContextMenu>
+			</Menu>
 		);
 	}
 
 	contextOptions() {
 		return (
 			<React.Fragment>
-				<MenuItem data={{ foo: 'bar' }} >
+				<Item data={{ foo: 'bar' }} >
 					ContextMenu Item 7
-				</MenuItem>
-				<MenuItem data={{ foo: 'bar' }} >
+				</Item>
+				<Item data={{ foo: 'bar' }} >
 					ContextMenu Item 8
-				</MenuItem>
-				<MenuItem divider />
-				<MenuItem data={{ foo: 'bar' }} >
+				</Item>
+				<Separator />
+				<Item data={{ foo: 'bar' }} >
 					ContextMenu Item 9
-				</MenuItem>
+				</Item>
 			</React.Fragment>
 		);
 	}
 
 	componentWillMount() {
 		document.head.insertAdjacentHTML("beforeend", "<link rel=\"stylesheet\" href=\"../node_modules/storm-react-diagrams/dist/style.min.css\" />");
+		document.head.insertAdjacentHTML("beforeend", "<link rel=\"stylesheet\" href=\"../node_modules/react-contexify/dist/ReactContexify.min.css\" />");
 		document.head.insertAdjacentHTML("beforeend", "<link rel=\"stylesheet\" href=\"./Configuration/Configuration.css\" />");
 	}
 
