@@ -1,18 +1,12 @@
 
 import React from "react";
-import ReactDOM from "react-dom";
 
-import {
-	DiagramEngine,
-	DiagramModel,
-	DiagramWidget
-} from "storm-react-diagrams";
+import { DiagramEngine, DiagramModel, DiagramWidget } from "storm-react-diagrams";
+
+import { Menu, Item, Separator, MenuProvider } from 'react-contexify';
 
 import { NodeFactory, NodeWindow } from "./Node"
-
 import CustomCode from "./Nodes/CustomCode/CustomCode"
-
-import { Menu, Item, Separator, Submenu, MenuProvider } from 'react-contexify';
 
 /*class Diagram extends DiagramWidget {
 
@@ -60,7 +54,7 @@ export default class Configuration extends NodeWindow {
 
 		this.render = () => (
 			<React.Fragment>
-				<MenuProvider id="Configuration222" style={{height: "100%"}}>
+				<MenuProvider id="Configuration">
 					<DiagramWidget className="configuration" diagramEngine={this.engine} />
 				</MenuProvider>
 				{this.contextMenu()}
@@ -70,26 +64,15 @@ export default class Configuration extends NodeWindow {
 
 	contextMenu() {
 		return (
-			<Menu id="Configuration222">
-				{this.contextOptions()}
-			</Menu>
-		);
-	}
-
-	contextOptions() {
-		return (
-			<React.Fragment>
+			<Menu id="Configuration" animation="fade">
 				<Item data={{ foo: 'bar' }} >
 					ContextMenu Item 7
-				</Item>
-				<Item data={{ foo: 'bar' }} >
-					ContextMenu Item 8
 				</Item>
 				<Separator />
 				<Item data={{ foo: 'bar' }} >
 					ContextMenu Item 9
 				</Item>
-			</React.Fragment>
+			</Menu>
 		);
 	}
 
@@ -97,12 +80,6 @@ export default class Configuration extends NodeWindow {
 		document.head.insertAdjacentHTML("beforeend", "<link rel=\"stylesheet\" href=\"../node_modules/storm-react-diagrams/dist/style.min.css\" />");
 		document.head.insertAdjacentHTML("beforeend", "<link rel=\"stylesheet\" href=\"../node_modules/react-contexify/dist/ReactContexify.min.css\" />");
 		document.head.insertAdjacentHTML("beforeend", "<link rel=\"stylesheet\" href=\"./Configuration/Configuration.css\" />");
-	}
-
-	componentDidMount() {
-		let node = document.createElement("div");
-		this.engine.canvas.appendChild(node);
-		this.engine.contextWrapper = node;
 	}
 
 	render() {

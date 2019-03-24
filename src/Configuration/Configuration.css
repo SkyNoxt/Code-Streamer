@@ -9,6 +9,6 @@
     outline: none;
 }
 
-.srd-node--selected>*>*>* {
+.srd-node--selected>*>* {
     border-color: #00c0ff !important
 }

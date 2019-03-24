@@ -1,22 +1,22 @@
 
 import React from "react";
-import ReactDOM from "react-dom";
 
 import { DefaultNodeFactory, DefaultNodeModel, DefaultNodeWidget } from "storm-react-diagrams";
-import Port from "./Port";
 
 import { Menu, MenuProvider } from 'react-contexify';
+
+import Port from "./Port";
 
 export class NodeFactory extends DefaultNodeFactory {
 
 	generateReactWidget(diagramEngine, node) {
 		return (
-			<div className="node-wrapper">
+			<React.Fragment>
 				<MenuProvider id={node.id}>
 					<DefaultNodeWidget node={node} />
 				</MenuProvider>
-				{diagramEngine.contextWrapper && ReactDOM.createPortal(node.contextMenu(), diagramEngine.contextWrapper)}
-			</div>
+				{node.contextMenu()}
+			</React.Fragment>
 		);
 	}
 
@@ -45,7 +45,7 @@ export default class Node extends DefaultNodeModel {
 
 	contextMenu() {
 		return (
-			<Menu id={this.id}>
+			<Menu id={this.id} animation="fade">
 				{this.contextOptions()}
 			</Menu>
 		);
