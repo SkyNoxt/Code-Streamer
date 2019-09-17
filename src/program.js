@@ -1,10 +1,12 @@
 
 require("@babel/register");
-var app = require("src/CodeStreamer.jsx");
 
-new app.Window("src/index.html", {
-	width: 1280,
-	height: 720,
-	frame: false,
-	icon: "img/code-streamer.png"
-}, app.CodeStreamer);
+const React = require("react");
+const ReactDOM = require("react-dom");
+
+const App = require("src/CodeStreamer.jsx");
+
+let component = document.createElement('div');
+window.document.body.appendChild(component);
+
+ReactDOM.render(React.createElement(App.CodeStreamer, {}), component);

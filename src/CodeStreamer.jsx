@@ -6,33 +6,36 @@ export class CodeStreamer extends React.Component {
 
 	render() {
 		return (
-			<div>Hello World!</div>
+			<Window page={"src/index.html"} settings={{ width: 1280, height: 720, frame: true, icon: "img/code-streamer.png" }}>
+				Hello World!
+			</Window>
 		);
 	}
 }
 
-export class Window {
-	constructor(page, settings, component, titleBar) {
-		nw.Window.open(page, settings, (window) => {
-			this.window = window;
-			this.window.on("loaded", () => {
-				titleBar ? ReactDOM.render(React.createElement(titleBar, { window: this }), this.window.window.document.getElementById("titleBar")) :
-					ReactDOM.render(<CodeStreamerTitleBar window={this} />, this.window.window.document.getElementById("titleBar"));
-				ReactDOM.render(React.createElement(component, { window: this }), this.window.window.document.getElementById("component"));
+class Window extends React.PureComponent {
+
+	constructor(props) {
+		super(props);
+		this.container = document.createElement("div");
+		this.external = null;
+	}
+
+	render() {
+		return ReactDOM.createPortal(this.props.children, this.container);
+	}
+
+	componentDidMount() {
+		nw.Window.open(this.props.page, this.props.settings, (window) => {
+			this.external = window;
+			this.external.on("loaded", () => {
+				this.external.window.document.body.appendChild(this.container);
 			});
 		});
 	}
 
-	minimize() {
-		this.window.minimize();
-	}
-
-	fullscreen() {
-		this.window.toggleFullscreen();
-	}
-
-	close() {
-		this.window.close();
+	componentWillUnmount() {
+		this.external.window.close();
 	}
 }
 
