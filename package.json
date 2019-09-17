@@ -1,0 +1,24 @@
+{
+  "name": "code-streamer",
+  "version": "1.0.0",
+  "description": "Flow Based Programming Framework",
+  "main": "src/program.js",
+  "keywords": [
+    "React",
+    "Flow Based Programming"
+  ],
+  "author": "ArtemPyx",
+  "private": true,
+  "copyright": "© Copyright 2019 ArtemPyx, all rights reserved.",
+  "license": "",
+  "devDependencies": {
+    "@babel/core": "latest",
+    "@babel/preset-env": "latest",
+    "@babel/preset-react": "latest",
+    "@babel/register": "latest"
+  },
+  "dependencies": {
+    "react": "latest",
+    "react-dom": "latest"
+  }
+}
