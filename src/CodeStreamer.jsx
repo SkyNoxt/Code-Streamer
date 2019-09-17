@@ -2,12 +2,14 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
+import Graph from "./Graph/Graph";
+
 export class CodeStreamer extends React.Component {
 
 	render() {
 		return (
 			<Window page={"src/CodeStreamer.html"} settings={{ width: 1280, height: 720, frame: true, icon: "img/code-streamer.png" }}>
-				Hello World!
+				<Graph class="graph" />
 			</Window>
 		);
 	}
@@ -24,7 +26,7 @@ class Window extends React.PureComponent {
 			this.external = window;
 			this.external.on("loaded", () => {
 				this.container = this.external.window.document.getElementById("component");
-				this.render = () => ReactDOM.createPortal(this.props.children, this.container);
+				this.render = () => ReactDOM.createPortal(React.cloneElement(this.props.children, { window: this.external }), this.container);
 				this.forceUpdate();
 			});
 		});
