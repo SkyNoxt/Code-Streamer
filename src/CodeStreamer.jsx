@@ -17,21 +17,21 @@ class Window extends React.PureComponent {
 
 	constructor(props) {
 		super(props);
-		this.container = document.createElement("div");
+		this.container = null;
 		this.external = null;
-	}
 
-	render() {
-		return ReactDOM.createPortal(this.props.children, this.container);
-	}
-
-	componentDidMount() {
 		nw.Window.open(this.props.page, this.props.settings, (window) => {
 			this.external = window;
 			this.external.on("loaded", () => {
-				this.external.window.document.body.appendChild(this.container);
+				this.container = this.external.window.document.getElementById("component");
+				this.render = () => ReactDOM.createPortal(this.props.children, this.container);
+				this.forceUpdate();
 			});
 		});
+	}
+
+	render() {
+		return null;;
 	}
 
 	componentWillUnmount() {
