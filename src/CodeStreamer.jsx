@@ -6,7 +6,7 @@ export class CodeStreamer extends React.Component {
 
 	render() {
 		return (
-			<Window page={"src/index.html"} settings={{ width: 1280, height: 720, frame: true, icon: "img/code-streamer.png" }}>
+			<Window page={"src/CodeStreamer.html"} settings={{ width: 1280, height: 720, frame: true, icon: "img/code-streamer.png" }}>
 				Hello World!
 			</Window>
 		);

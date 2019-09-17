@@ -2,7 +2,7 @@
   "name": "code-streamer",
   "version": "1.0.0",
   "description": "Flow Based Programming Framework",
-  "main": "src/program.js",
+  "main": "src/CodeStreamer.js",
   "keywords": [
     "React",
     "Flow Based Programming"
