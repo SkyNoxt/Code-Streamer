@@ -1,9 +1,12 @@
 
 import React from "react";
 
-import { DiagramEngine, DiagramModel, DefaultNodeModel } from "storm-react-diagrams";
+import { DiagramEngine, DiagramModel } from "storm-react-diagrams";
 
 import Diagram from "./Diagram";
+import { PluginFactory } from "./Plugin";
+
+import NetworkSocket from "./Plugins/NetworkSocket/NetworkSocket";
 
 export default class Graph extends React.Component {
 
@@ -12,12 +15,16 @@ export default class Graph extends React.Component {
 
         this.engine = new DiagramEngine();
         this.engine.installDefaultFactories();
+        this.engine.registerNodeFactory(new PluginFactory());
 
-        var node1 = new DefaultNodeModel("Node 1", "rgb(0,192,255");
+        let model = new DiagramModel();
 
-        let diagram = new DiagramModel();
-        diagram.addAll(node1);
-        this.engine.setDiagramModel(diagram);
+        var socket0 = new NetworkSocket();
+        var socket1 = new NetworkSocket();
+
+        model.addAll(socket0, socket1);
+
+        this.engine.setDiagramModel(model);
     }
 
     componentDidMount() {

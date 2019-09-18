@@ -1,5 +1,5 @@
 
-import { SelectingAction, MoveCanvasAction, NodeLayerWidget, LinkLayerWidget, DiagramWidget } from "storm-react-diagrams";
+import { SelectingAction, MoveCanvasAction, MoveItemsAction, PortModel, NodeLayerWidget, LinkLayerWidget, DiagramWidget } from "storm-react-diagrams";
 
 export default class Diagram extends DiagramWidget {
 
