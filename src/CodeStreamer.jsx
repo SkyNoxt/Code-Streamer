@@ -8,8 +8,9 @@ export class CodeStreamer extends React.Component {
 
 	render() {
 		return (
-			<Window page={"src/CodeStreamer.html"} settings={{ width: 1280, height: 720, frame: true, icon: "img/code-streamer.png" }}>
-				<Graph class="graph" />
+			<Window page={"src/CodeStreamer.html"} settings={{ width: 1280, height: 720, frame: false, icon: "img/code-streamer.png" }}>
+				<CodeStreamerTitleBar />
+				<Graph />
 			</Window>
 		);
 	}
@@ -26,14 +27,14 @@ class Window extends React.PureComponent {
 			this.external = window;
 			this.external.on("loaded", () => {
 				this.container = this.external.window.document.getElementById("component");
-				this.render = () => ReactDOM.createPortal(React.cloneElement(this.props.children, { window: this.external }), this.container);
+				this.render = () => ReactDOM.createPortal(this.props.children, this.container);
 				this.forceUpdate();
 			});
 		});
 	}
 
 	render() {
-		return null;;
+		return null;
 	}
 
 	componentWillUnmount() {
@@ -45,7 +46,7 @@ class CodeStreamerTitleBar extends React.Component {
 
 	render() {
 		return (
-			<TitleBar window={this.props.window} title="Code Streamer">
+			<TitleBar title="Code Streamer">
 				<button>?</button>
 			</TitleBar>
 		);
@@ -54,15 +55,19 @@ class CodeStreamerTitleBar extends React.Component {
 
 class TitleBar extends React.Component {
 
+	componentDidMount() {
+		this.setState({ window: nw.Window.get(ReactDOM.findDOMNode(this).ownerDocument.defaultView) });
+	}
+
 	render() {
 		return (
 			<React.Fragment>
 				<div id="titleBarTitle">{this.props.title}</div>
 				<div id="titleBarButtons">
 					{this.props.children}
-					<button onClick={() => this.props.window.minimize()}>-</button>
-					<button onClick={() => this.props.window.fullscreen()}>+</button>
-					<button onClick={() => this.props.window.close()}>x</button>
+					<button onClick={() => this.state.window.minimize()}>-</button>
+					<button onClick={() => this.state.window.toggleFullscreen()}>+</button>
+					<button onClick={() => this.state.window.close()}>x</button>
 				</div>
 			</React.Fragment>
 		);

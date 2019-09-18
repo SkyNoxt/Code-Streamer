@@ -7,7 +7,3 @@
 .graph:focus {
     outline: none;
 }
-
-.srd-node--selected>*>* {
-    border-color: #00c0ff !important
-}
