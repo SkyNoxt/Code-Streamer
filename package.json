@@ -20,6 +20,6 @@
   "dependencies": {
     "react": "latest",
     "react-dom": "latest",
-    "storm-react-diagrams": "latest"
+    "@projectstorm/react-diagrams": "latest"
   }
 }

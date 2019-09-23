@@ -1,5 +1,5 @@
 
-import { SelectingAction, MoveCanvasAction, MoveItemsAction, PortModel, NodeLayerWidget, LinkLayerWidget, DiagramWidget } from "storm-react-diagrams";
+import { SelectingAction, MoveCanvasAction, MoveItemsAction, PortModel, NodeLayerWidget, LinkLayerWidget, DiagramWidget } from "@projectstorm/react-diagrams";
 
 export default class Diagram extends DiagramWidget {
 
@@ -43,6 +43,7 @@ export default class Diagram extends DiagramWidget {
                 }}
                 onWheel={event => {
                     if (this.props.allowCanvasZoom) {
+                        //event.preventDefault();
                         event.stopPropagation();
                         const oldZoomFactor = diagramModel.getZoomLevel() / 100;
                         let scrollDelta = this.props.inverseZoom ? -event.deltaY : event.deltaY;
@@ -86,6 +87,7 @@ export default class Diagram extends DiagramWidget {
                     }
                 }}
                 onMouseDown={event => {
+                    if (event.nativeEvent.which === 3) return;
                     this.setState({ ...this.state, wasMoved: false });
 
                     diagramEngine.clearRepaintEntities();

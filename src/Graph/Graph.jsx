@@ -1,7 +1,7 @@
 
 import React from "react";
 
-import { DiagramEngine, DiagramModel } from "storm-react-diagrams";
+import { DiagramEngine, DiagramModel } from "@projectstorm/react-diagrams";
 
 import Diagram from "./Diagram";
 import { PluginFactory } from "./Plugin";
@@ -29,7 +29,7 @@ export default class Graph extends React.Component {
 
     componentDidMount() {
         let DOMNode = ReactDOM.findDOMNode(this);
-        DOMNode.ownerDocument.head.insertAdjacentHTML("beforeend", "<link rel=\"stylesheet\" href=\"../node_modules/storm-react-diagrams/dist/style.min.css\" />");
+        DOMNode.ownerDocument.head.insertAdjacentHTML("beforeend", "<link rel=\"stylesheet\" href=\"../node_modules/@projectstorm/react-diagrams/dist/style.min.css\" />");
         DOMNode.ownerDocument.head.insertAdjacentHTML("beforeend", "<link rel=\"stylesheet\" href=\"./Graph/Graph.css\" />");
     }
 
