@@ -9,9 +9,9 @@ export class PluginFactory extends DefaultNodeFactory {
 
 	generateReactWidget(diagramEngine, plugin) {
 		return (
-			<React.Fragment>
+			<div onDoubleClick={() => plugin.onDoubleClick()}>
 				<DefaultNodeWidget node={plugin} />
-			</React.Fragment>
+			</div>
 		);
 	}
 
@@ -37,4 +37,6 @@ export default class Plugin extends DefaultNodeModel {
 	addInPort(label, linkCallback, sampleCallback) {
 		return this.addPort(new Port(true, label, linkCallback, sampleCallback));
 	}
+
+	onDoubleClick() { }
 }
