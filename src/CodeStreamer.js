@@ -6,7 +6,7 @@ const ReactDOM = require("react-dom");
 
 const App = require("src/CodeStreamer.jsx");
 
-let component = document.createElement('div');
-window.document.body.appendChild(component);
+let container = document.createElement('div');
+window.document.body.appendChild(container);
 
-ReactDOM.render(React.createElement(App.CodeStreamer, {}), component);
+ReactDOM.render(React.createElement(App.CodeStreamer, {}), container);

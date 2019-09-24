@@ -26,7 +26,7 @@ class Window extends React.PureComponent {
 		nw.Window.open(this.props.page, this.props.settings, (window) => {
 			this.external = window;
 			this.external.on("loaded", () => {
-				this.container = this.external.window.document.getElementById("component");
+				this.container = this.external.window.document.getElementById("container");
 				this.render = () => ReactDOM.createPortal(this.props.children, this.container);
 				this.forceUpdate();
 			});
@@ -61,7 +61,7 @@ class TitleBar extends React.Component {
 
 	render() {
 		return (
-			<React.Fragment>
+			<div id="titleBar">
 				<div id="titleBarTitle">{this.props.title}</div>
 				<div id="titleBarButtons">
 					{this.props.children}
@@ -69,7 +69,7 @@ class TitleBar extends React.Component {
 					<button onClick={() => this.state.window.toggleFullscreen()}>+</button>
 					<button onClick={() => this.state.window.close()}>x</button>
 				</div>
-			</React.Fragment>
+			</div>
 		);
 	}
 }
