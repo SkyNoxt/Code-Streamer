@@ -27,12 +27,6 @@ export default class Graph extends React.Component {
         this.engine.setDiagramModel(model);
     }
 
-    componentDidMount() {
-        let DOMNode = ReactDOM.findDOMNode(this);
-        DOMNode.ownerDocument.head.insertAdjacentHTML("beforeend", "<link rel=\"stylesheet\" href=\"../node_modules/@projectstorm/react-diagrams/dist/style.min.css\" />");
-        DOMNode.ownerDocument.head.insertAdjacentHTML("beforeend", "<link rel=\"stylesheet\" href=\"./Graph/Graph.css\" />");
-    }
-
     render() {
         return (
             <Diagram className="graph" diagramEngine={this.engine} />

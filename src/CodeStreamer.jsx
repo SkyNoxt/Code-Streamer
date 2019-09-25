@@ -9,7 +9,8 @@ export class CodeStreamer extends React.Component {
 
 	render() {
 		return (
-			<Window page={"src/CodeStreamer.html"} settings={{ width: 1280, height: 720, frame: false, icon: "img/code-streamer.png" }}>
+			<Window page={"src/CodeStreamer.html"} settings={{ width: 1280, height: 720, frame: false, icon: "img/code-streamer.png" }}
+				styles={[ "../node_modules/@projectstorm/react-diagrams/dist/style.min.css", __dirname + "/Graph/Graph.css" ]}>
 				<CodeStreamerTitleBar />
 				<Graph />
 			</Window>
