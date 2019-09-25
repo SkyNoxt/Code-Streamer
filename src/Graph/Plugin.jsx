@@ -40,3 +40,33 @@ export default class Plugin extends DefaultNodeModel {
 
 	onDoubleClick() { }
 }
+
+export class Window extends React.PureComponent {
+
+	constructor(props) {
+		super(props);
+		this.container = null;
+		this.external = null;
+
+		nw.Window.open(this.props.page, this.props.settings, (window) => {
+			this.external = window;
+			this.external.on("loaded", () => {
+				this.container = this.external.window.document.getElementById("container");
+				this.render = () => ReactDOM.createPortal(this.props.children, this.container);
+				this.props.loaded && this.props.loaded(this);
+				this.forceUpdate();
+			});
+			this.external.on("closed", () => {
+				this.props.closed && this.props.closed(this);
+			});
+		});
+	}
+
+	render() {
+		return null;
+	}
+
+	componentWillUnmount() {
+		this.external.window.close();
+	}
+}
