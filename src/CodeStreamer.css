@@ -40,7 +40,7 @@ body {
 
 #titleBarButtons button {
 	height: 32px;
-	width: 32px;
+	min-width: 32px;
 	background-color: transparent;
 	border: none;
 	color: #F1F1F1;
