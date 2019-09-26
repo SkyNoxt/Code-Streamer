@@ -12,8 +12,8 @@ export default class Graph extends React.Component {
         super(props);
 
         import("./Plugins/NetworkSocket").then(mod => {
-            for (var i in mod.default)
-                model.addAll(new mod.default[i]());
+            for (const modul of mod.default)
+                model.addAll(new modul());
 
             this.forceUpdate();
         });

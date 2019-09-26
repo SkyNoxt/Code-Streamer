@@ -52,8 +52,9 @@ export class Window extends React.PureComponent {
 			this.external = window;
 			this.external.on("loaded", () => {
 				this.container = this.external.window.document.getElementById("container");
-				this.props.styles && this.props.styles.forEach((style) =>
-					this.external.window.document.head.insertAdjacentHTML("beforeend", "<link rel=\"stylesheet\" href=\"" + style + "\" />"));
+				if (this.props.styles)
+					for (const style of this.props.styles)
+						this.external.window.document.head.insertAdjacentHTML("beforeend", "<link rel=\"stylesheet\" href=\"" + style + "\" />");
 				this.render = () => ReactDOM.createPortal(this.props.children, this.container);
 				this.props.loaded && this.props.loaded(this);
 				this.forceUpdate();
