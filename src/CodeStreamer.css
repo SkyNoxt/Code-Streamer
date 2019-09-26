@@ -24,11 +24,9 @@ body {
 }
 
 #titleBarTitle {
-	position: fixed;
-	top: 0px;
-	left: 12px;
 	line-height: 32px;
 	font-size: 14px;
+	text-align: center;
 }
 
 #titleBarButtons {
