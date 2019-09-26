@@ -7,8 +7,8 @@ export default class Link extends DefaultLinkModel {
 		super.setTargetPort(port);
 		if (port == null) return;
 
-		for (const link of port.links) {
-			if (link !== this.id && (link.sourcePort === this.sourcePort || link.targetPort === this.sourcePort))
+		for (const link in port.links) {
+			if (link !== this.id && (port.links[link].sourcePort === this.sourcePort || port.links[link].targetPort === this.sourcePort))
 				return;
 		}
 
