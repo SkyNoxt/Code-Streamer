@@ -6,23 +6,23 @@ import { DiagramEngine, DiagramModel } from "@projectstorm/react-diagrams";
 import Diagram from "./Diagram";
 import { PluginFactory } from "./Plugin";
 
-import NetworkSocket from "./Plugins/NetworkSocket/NetworkSocket";
-
 export default class Graph extends React.Component {
 
     constructor(props) {
         super(props);
+
+        import("./Plugins/NetworkSocket").then(mod => {
+            for (var i in mod.default)
+                model.addAll(new mod.default[i]());
+
+            this.forceUpdate();
+        });
 
         this.engine = new DiagramEngine();
         this.engine.installDefaultFactories();
         this.engine.registerNodeFactory(new PluginFactory());
 
         let model = new DiagramModel();
-
-        var socket0 = new NetworkSocket();
-        var socket1 = new NetworkSocket();
-
-        model.addAll(socket0, socket1);
 
         this.engine.setDiagramModel(model);
     }
