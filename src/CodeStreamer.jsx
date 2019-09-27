@@ -10,9 +10,10 @@ export class CodeStreamer extends React.Component {
 	render() {
 		return (
 			<Window page={"src/CodeStreamer.html"} settings={{ width: 1280, height: 720, frame: false, icon: "img/code-streamer.png" }}
-				styles={[ "../node_modules/@projectstorm/react-diagrams/dist/style.min.css", __dirname + "/Graph/Graph.css" ]}>
+				styles={["../node_modules/@projectstorm/react-diagrams/dist/style.min.css", __dirname + "/Graph/Graph.css"]}>
 				<CodeStreamerTitleBar />
 				<Graph />
+				<StatusBar />
 			</Window>
 		);
 	}
@@ -45,6 +46,17 @@ class TitleBar extends React.Component {
 					<button onClick={() => this.state.window.toggleFullscreen()}>+</button>
 					<button onClick={() => this.state.window.close()}>x</button>
 				</div>
+			</div>
+		);
+	}
+}
+
+class StatusBar extends React.Component {
+
+	render() {
+		return (
+			<div id="statusBar">
+				{this.props.status}
 			</div>
 		);
 	}

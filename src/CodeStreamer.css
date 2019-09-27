@@ -1,39 +1,28 @@
 body {
-	width: initial;
-	height: initial;
 	margin: 0px;
-	padding: 0px;
 	background-color: #2D2D30;
 	border: 1px solid #68217A;
-	border-bottom: 24px solid #68217A;
-	position: absolute;
-	top: 0px;
 	left: 0px;
 	right: 0px;
-	bottom: 0px;
 	overflow: hidden;
+	font-family: sans-serif;
 }
 
 #titleBar {
 	-webkit-app-region: drag;
-	height: 32px;
-	padding: 0px;
-	margin: 0px;
 	color: #ADADAD;
-	font-family: sans-serif;
+	text-align: center;
 }
 
 #titleBarTitle {
 	line-height: 32px;
-	font-size: 14px;
-	text-align: center;
 }
 
 #titleBarButtons {
 	-webkit-app-region: no-drag;
 	position: fixed;
-	top: 1px;
-	right: 0px;
+	top: 0;
+	right: 0;
 }
 
 #titleBarButtons button {
@@ -42,18 +31,22 @@ body {
 	background-color: transparent;
 	border: none;
 	color: #F1F1F1;
-	font-size: 16px;
 }
 
 #titleBarButtons button:hover {
 	background-color: #3F3F41;
 }
 
+#statusBar {
+	background-color: #68217A;
+	color: rgb(255, 255, 255);
+	padding-left: 10px;
+    height: 24px;
+	font-size: 12px;
+	line-height: 24px;
+}
+
 #container {
 	height: 100vh;
 	color: #CCCCCC;
-}
-
-a {
-	color: #68217A;
 }
