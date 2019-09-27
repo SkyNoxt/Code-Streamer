@@ -16,6 +16,7 @@ export default class Graph extends React.Component {
         import("./Plugins/NetworkSocket").then(mod => {
             for (const modul of mod.default)
                 this.models.push(modul);
+            this.forceUpdate();
         });
 
         this.engine = new DiagramEngine();
@@ -43,9 +44,7 @@ export default class Graph extends React.Component {
                     event.preventDefault();
                 }}
             >
-                <Tray className="tray">
-                    <TrayItem name="Component 1" model={0} />
-                </Tray>
+                <Tray models={this.models} />
                 <Diagram className="diagram" diagramEngine={this.engine} />
             </div>
         );
@@ -55,11 +54,10 @@ export default class Graph extends React.Component {
 class Tray extends React.Component {
     render() {
         return (
-            <div {...this.props}>
-                <TrayItem name="Component 0" model={0} />
-                <TrayItem name="Component 0" model={0} />
-                <TrayItem name="Component 0" model={0} />
-                <TrayItem name="Component 0" model={0} />
+            <div className="tray">
+                {this.props.models.map((model, index) => {
+                    return <TrayItem key={index} name={model.name} model={index} />
+                })}
             </div>
         );
     }
@@ -68,13 +66,16 @@ class Tray extends React.Component {
 class TrayItem extends React.Component {
     render() {
         return (
-            <div
-                draggable={true}
+
+            <div className="srd-default-node " style={{background: "rgb(255, 192, 0)"}} draggable={true}
                 onDragStart={event => {
                     event.dataTransfer.setData("model", this.props.model);
-                }}
-            >
-                {this.props.name}
+                }}>
+                <div className="srd-default-node__title ">
+                    <div className="srd-default-node__name ">
+                        {this.props.name}
+                    </div>
+                </div>
             </div>
         );
     }
