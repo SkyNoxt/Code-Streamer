@@ -67,7 +67,7 @@ class TrayItem extends React.Component {
     render() {
         return (
 
-            <div className="srd-default-node " style={{background: "rgb(255, 192, 0)"}} draggable={true}
+            <div className="srd-default-node " style={{ background: "rgb(255, 192, 0)" }} draggable={true}
                 onDragStart={event => {
                     event.dataTransfer.setData("model", this.props.model);
                 }}>
