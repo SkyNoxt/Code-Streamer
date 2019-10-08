@@ -1,14 +1,24 @@
-.configuration {
-    height: 100vh;
-    /* background-color: #3c3c3c !important; */
+.graph {
+    height: calc(100vh - 57px);
+}
+
+.diagram {
+    height: 100%;
     background-image: linear-gradient(0deg, transparent 24%, rgba(255, 255, 255, 0.05) 25%, rgba(255, 255, 255, 0.05) 26%, transparent 27%, transparent 74%, rgba(255, 255, 255, 0.05) 75%, rgba(255, 255, 255, 0.05) 76%, transparent 77%, transparent), linear-gradient(90deg, transparent 24%, rgba(255, 255, 255, 0.05) 25%, rgba(255, 255, 255, 0.05) 26%, transparent 27%, transparent 74%, rgba(255, 255, 255, 0.05) 75%, rgba(255, 255, 255, 0.05) 76%, transparent 77%, transparent);
     background-size: 50px 50px;
 }
 
-.configuration:focus {
+.diagram:focus {
     outline: none;
 }
 
 .srd-node--selected>*>* {
     border-color: #00c0ff !important
+}
+
+.tray {
+    position: fixed;
+    background-color: #2d2d30c0;
+    height: inherit;
+    z-index: 1;
 }

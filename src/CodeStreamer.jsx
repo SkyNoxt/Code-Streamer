@@ -1,80 +1,30 @@
 
-import { remote } from "electron";
+import React from "react";
+import ReactDOM from "react-dom";
 
-import Configuration from "./Configuration/Configuration";
-import { CustomCodeControls } from "./Configuration/Nodes/CustomCode/CustomCode"
+import Graph from "./Graph/Graph";
+import { Window } from "./Graph/Plugin";
 
-window.$ = require("jquery");
-window.React = require("react");
-window.ReactDOM = require("react-dom");
+export class CodeStreamer extends React.Component {
 
-const GoldenLayout = require("golden-layout");
-
-export default class CodeStreamer {
-	constructor() {
-		ReactDOM.render(<CodeStreamerTitleBar />, document.getElementById("titleBar"));
-
-		var codeStreamer = new GoldenLayout({
-			content: [{
-				type: "row",
-				content: [{
-					type: "react-component",
-					title: "Configuration",
-					component: "Configuration"
-				}]
-			}]
-		}, document.getElementById("CodeStreamer"));
-
-		window.onresize = () => codeStreamer.updateSize();
-
-		codeStreamer.registerComponent(Configuration.name, Configuration);
-		codeStreamer.registerComponent(CustomCodeControls.name, CustomCodeControls);
-
-		codeStreamer.on("componentCreated", function (component) {
-			component.element.on("click", (event) => component.instance._reactComponent.elementClick(event, component.element));
-			component.container.on("resize", (event) => component.instance._reactComponent.containerResize(event, component.container));
-			component.container.on("open", (event) => component.instance._reactComponent.containerOpen(event, component.container));
-		});
-
-		codeStreamer.init();
-		window.codeStreamer = codeStreamer;
-
-		document.head.insertAdjacentHTML("beforeend", "<link rel=\"stylesheet\" href=\"../node_modules/golden-layout/src/css/goldenlayout-base.css\" />");
-		document.head.insertAdjacentHTML("beforeend", "<link rel=\"stylesheet\" href=\"../node_modules/golden-layout/src/css/goldenlayout-dark-theme.css\" />");
+	render() {
+		return (
+			<Window page={"src/CodeStreamer.html"} settings={{ width: 1280, height: 720, frame: false, icon: "img/code-streamer.png" }}
+				styles={["../node_modules/@projectstorm/react-diagrams/dist/style.min.css", __dirname + "/Graph/Graph.css"]}>
+				<CodeStreamerTitleBar />
+				<Graph />
+				<StatusBar />
+			</Window>
+		);
 	}
 }
 
 class CodeStreamerTitleBar extends React.Component {
 
-	about() {
-		if (this.state.about) {
-			this.state.about.close();
-			this.state.about = null;
-		}
-		else
-			this.setState({
-				about: remote.require("about-window").default({
-					icon_path: window.appPath + "/src/img/code-streamer.png",
-					product_name: "Code Streamer",
-					bug_report_url: "https://www.artempix.net",
-					bug_link_text: "artempix.net",
-					copyright: "© Copyright 2018 ArtemPix, all rights reserved.",
-					description: "Flow Based Programming Framework",
-					win_options: { parent: this.state.window, frame: false, resizable: false, skipTaskbar: true },
-					css_path: window.appPath + "/src/index.css",
-					use_version_info: true
-				})
-			});
-	}
-
-	componentWillMount() {
-		this.setState({ window: remote.getCurrentWindow(), about: null });
-	}
-
 	render() {
 		return (
-			<TitleBar window={this.state.window} title="Code Streamer">
-				<button onClick={() => this.about()}>?</button>
+			<TitleBar title="Code Streamer">
+				<button>?</button>
 			</TitleBar>
 		);
 	}
@@ -82,17 +32,32 @@ class CodeStreamerTitleBar extends React.Component {
 
 class TitleBar extends React.Component {
 
+	componentDidMount() {
+		this.setState({ window: nw.Window.get(ReactDOM.findDOMNode(this).ownerDocument.defaultView) });
+	}
+
 	render() {
 		return (
-			<React.Fragment>
+			<div id="titleBar">
 				<div id="titleBarTitle">{this.props.title}</div>
 				<div id="titleBarButtons">
 					{this.props.children}
-					<button onClick={() => this.props.window.minimize()}>-</button>
-					<button onClick={() => this.props.window.isMaximized() ? this.props.window.unmaximize() : this.props.window.maximize()}>+</button>
-					<button onClick={() => this.props.window.close()}>x</button>
+					<button onClick={() => this.state.window.minimize()}>-</button>
+					<button onClick={() => this.state.window.toggleFullscreen()}>+</button>
+					<button onClick={() => this.state.window.close()}>x</button>
 				</div>
-			</React.Fragment>
+			</div>
+		);
+	}
+}
+
+class StatusBar extends React.Component {
+
+	render() {
+		return (
+			<div id="statusBar">
+				{this.props.status}
+			</div>
 		);
 	}
 }

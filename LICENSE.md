@@ -1,1 +1,1 @@
-© Copyright 2019 ArtemPix, all rights reserved.
+© Copyright 2019 ArtemPyx, all rights reserved.

@@ -2,41 +2,24 @@
   "name": "code-streamer",
   "version": "1.0.0",
   "description": "Flow Based Programming Framework",
-  "main": "src/program.js",
-  "scripts": {
-    "build": "babel ./src -d ./build",
-    "electron": "electron ."
-  },
+  "main": "src/CodeStreamer.js",
   "keywords": [
-    "Electron",
     "React",
     "Flow Based Programming"
   ],
-  "author": "ArtemPix",
-  "homepage": "file:./",
-  "repository": "",
+  "author": "ArtemPyx",
   "private": true,
-  "copyright": "© Copyright 2019 ArtemPix, all rights reserved.",
+  "copyright": "© Copyright 2019 ArtemPyx, all rights reserved.",
   "license": "",
   "devDependencies": {
-    "@babel/cli": "latest",
     "@babel/core": "latest",
     "@babel/preset-env": "latest",
     "@babel/preset-react": "latest",
-    "@babel/register": "latest",
-    "electron": "latest"
+    "@babel/register": "latest"
   },
   "dependencies": {
-    "about-window": "latest",
-    "codemirror": "latest",
-    "dat.gui": "latest",
-    "golden-layout": "latest",
-    "jquery": "latest",
     "react": "latest",
-    "react-contexify": "latest",
     "react-dom": "latest",
-    "stats.js": "latest",
-    "storm-react-diagrams": "latest",
-    "three": "latest"
+    "@projectstorm/react-diagrams": "latest"
   }
 }
