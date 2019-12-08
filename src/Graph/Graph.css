@@ -18,7 +18,9 @@
 
 .tray {
     position: fixed;
+    overflow-y: auto;
     background-color: #2d2d30c0;
     height: inherit;
+    direction: rtl;
     z-index: 1;
 }

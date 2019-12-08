@@ -1,4 +1,5 @@
 
+import fs from "fs";
 import React from "react";
 
 import { DiagramEngine, DiagramModel } from "@projectstorm/react-diagrams";
@@ -13,10 +14,26 @@ export default class Graph extends React.Component {
 
         this.models = [];
 
-        import("./Plugins/NetworkSocket").then(mod => {
-            for (const modul of mod.default)
-                this.models.push(modul);
-            this.forceUpdate();
+        /*fs.readdir("node_modules/@code-streamer", (error, modulePaths) => {
+            for (const modulePath of modulePaths)
+                import("node_modules/@code-streamer/" + modulePath).then(exported => {
+                    for (const module of exported.default) {
+                        module.graph = this;
+                        this.models.push(module);
+                    }
+                    this.forceUpdate();
+                });
+        });*/
+
+        fs.readdir(__dirname + "/Plugins", (error, modulePaths) => {
+            for (const modulePath of modulePaths)
+                import(__dirname + "/Plugins/" + modulePath).then(exported => {
+                    for (const module of exported.default) {
+                        module.graph = this;
+                        this.models.push(module);
+                    }
+                    this.forceUpdate();
+                });
         });
 
         this.engine = new DiagramEngine();

@@ -15,10 +15,10 @@ export default class Port extends DefaultPortModel {
 	}
 
 	transmit(data) {
-		for (const link of this.links) {
-			link.sourcePort.sampleCallback(data);
-			if (link.targetPort !== null)
-				link.targetPort.sampleCallback(data);
+		for (const link in this.links) {
+			this.links[link].sourcePort.sampleCallback(data);
+			if (this.links[link].targetPort !== null)
+			this.links[link].targetPort.sampleCallback(data);
 		}
 	}
 }
