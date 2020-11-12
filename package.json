@@ -7,9 +7,9 @@
     "React",
     "Flow Based Programming"
   ],
-  "author": "ArtemPyx",
+  "author": "Sky Noxt",
   "private": true,
-  "copyright": "© Copyright 2019 ArtemPyx, all rights reserved.",
+  "copyright": "© Copyright 2020 Sky Noxt, all rights reserved.",
   "license": "",
   "devDependencies": {
     "@babel/core": "latest",

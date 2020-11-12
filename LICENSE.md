@@ -1,1 +1,1 @@
-© Copyright 2019 ArtemPyx, all rights reserved.
+© Copyright 2020 Sky Noxt, all rights reserved.
