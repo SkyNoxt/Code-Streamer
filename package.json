@@ -18,8 +18,8 @@
     "@babel/register": "latest"
   },
   "dependencies": {
-    "@projectstorm/react-diagrams": "latest",
     "react": "latest",
-    "react-dom": "latest"
+    "react-dom": "latest",
+    "storm-react-diagrams": "latest"
   }
 }

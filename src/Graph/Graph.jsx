@@ -2,7 +2,7 @@
 import fs from "fs";
 import React from "react";
 
-import { DiagramEngine, DiagramModel } from "@projectstorm/react-diagrams";
+import { DiagramEngine, DiagramModel } from "storm-react-diagrams";
 
 import Diagram from "./Diagram";
 import { PluginFactory } from "./Plugin";

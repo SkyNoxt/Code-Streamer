@@ -1,5 +1,5 @@
 
-import { DefaultPortModel } from "@projectstorm/react-diagrams";
+import { DefaultPortModel } from "storm-react-diagrams";
 import Link from "./Link";
 
 export default class Port extends DefaultPortModel {

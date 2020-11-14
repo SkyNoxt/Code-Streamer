@@ -1,7 +1,7 @@
 
 import React from "react";
 
-import { DefaultNodeFactory, DefaultNodeModel, DefaultNodeWidget } from "@projectstorm/react-diagrams";
+import { DefaultNodeFactory, DefaultNodeModel, DefaultNodeWidget } from "storm-react-diagrams";
 
 import Port from "./Port";
 
