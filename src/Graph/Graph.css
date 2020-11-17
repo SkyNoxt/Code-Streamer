@@ -16,6 +16,10 @@
     border-color: #00c0ff !important
 }
 
+.srd-default-port > .name {
+    margin: 0 5px;
+}
+
 .tray {
     position: fixed;
     overflow-y: auto;
