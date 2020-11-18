@@ -22,14 +22,6 @@ export class PluginFactory extends DefaultNodeFactory {
 
 export default class Plugin extends DefaultNodeModel {
 
-	constructor(name, color, controls) {
-		super(name, color);
-		if (controls) {
-			this.controls = controls;
-			this.controls.plugin = this;
-		}
-	}
-
 	addOutPort(label, linkCallback, sampleCallback) {
 		return this.addPort(new Port(false, label, linkCallback, sampleCallback));
 	}
