@@ -29,7 +29,7 @@ export default class Graph extends React.Component {
             for (const modulePath of modulePaths)
                 import(__dirname + "/Plugins/" + modulePath).then(exported => {
                     for (const module of exported.default) {
-                        module.graph = this;
+                        module.class.graph = this;
                         this.models.push(module);
                     }
                     this.forceUpdate();
@@ -50,7 +50,7 @@ export default class Graph extends React.Component {
                     var model = event.dataTransfer.getData("model");
                     if (!model) return;
 
-                    var node = new this.models[model]();
+                    var node = new this.models[model].class();
                     var points = this.engine.getRelativeMousePoint(event);
                     node.x = points.x;
                     node.y = points.y;
@@ -73,7 +73,7 @@ class Tray extends React.Component {
         return (
             <div className="tray">
                 {this.props.models.map((model, index) => {
-                    return <TrayItem key={index} name={model.name} model={index} />
+                    return <TrayItem key={index} name={model.name} color={model.color} model={index} />
                 })}
             </div>
         );
@@ -83,8 +83,7 @@ class Tray extends React.Component {
 class TrayItem extends React.Component {
     render() {
         return (
-
-            <div className="srd-default-node " style={{ background: "rgb(255, 192, 0)" }} draggable={true}
+            <div className="srd-default-node " style={{ background: this.props.color }} draggable={true}
                 onDragStart={event => {
                     event.dataTransfer.setData("model", this.props.model);
                 }}>
