@@ -3,7 +3,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 
 import Graph from "./Graph/Graph";
-import { Window } from "./Graph/Plugin";
+import { Window } from "./Graph/Node";
 
 export class CodeStreamer extends React.Component {
 

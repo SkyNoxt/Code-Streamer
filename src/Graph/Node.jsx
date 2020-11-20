@@ -5,22 +5,22 @@ import { DefaultNodeFactory, DefaultNodeModel, DefaultNodeWidget } from "storm-r
 
 import Port from "./Port";
 
-export class PluginFactory extends DefaultNodeFactory {
+export class NodeFactory extends DefaultNodeFactory {
 
-	generateReactWidget(diagramEngine, plugin) {
+	generateReactWidget(diagramEngine, node) {
 		return (
-			<div onDoubleClick={() => plugin.onDoubleClick()}>
-				<DefaultNodeWidget node={plugin} />
+			<div onDoubleClick={() => node.onDoubleClick()}>
+				<DefaultNodeWidget node={node} />
 			</div>
 		);
 	}
 
 	getNewInstance() {
-		return new Plugin();
+		return new Node();
 	}
 }
 
-export default class Plugin extends DefaultNodeModel {
+export default class Node extends DefaultNodeModel {
 
 	addOutPort(label, linkCallback, sampleCallback) {
 		return this.addPort(new Port(false, label, linkCallback, sampleCallback));

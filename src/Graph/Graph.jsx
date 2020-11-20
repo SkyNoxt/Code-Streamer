@@ -5,7 +5,7 @@ import React from "react";
 import { DiagramEngine, DiagramModel } from "storm-react-diagrams";
 
 import Diagram from "./Diagram";
-import { PluginFactory } from "./Plugin";
+import { NodeFactory } from "./Node";
 
 export default class Graph extends React.Component {
 
@@ -25,9 +25,9 @@ export default class Graph extends React.Component {
                 });
         });*/
 
-        fs.readdir(__dirname + "/Plugins", (error, modulePaths) => {
+        fs.readdir(__dirname + "/Nodes", (error, modulePaths) => {
             for (const modulePath of modulePaths)
-                import(__dirname + "/Plugins/" + modulePath).then(exported => {
+                import(__dirname + "/Nodes/" + modulePath).then(exported => {
                     for (const module of exported.default) {
                         module.class.graph = this;
                         this.models.push(module);
@@ -38,7 +38,7 @@ export default class Graph extends React.Component {
 
         this.engine = new DiagramEngine();
         this.engine.installDefaultFactories();
-        this.engine.registerNodeFactory(new PluginFactory());
+        this.engine.registerNodeFactory(new NodeFactory());
 
         this.engine.setDiagramModel(new DiagramModel());
     }
