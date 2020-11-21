@@ -3,7 +3,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 
 import Graph from "./Graph/Graph";
-import { Window } from "./Graph/Node";
+import { Window, TitleBar, StatusBar } from "./Graph/Node";
 
 export class CodeStreamer extends React.Component {
 
@@ -26,38 +26,6 @@ class CodeStreamerTitleBar extends React.Component {
 			<TitleBar title="Code Streamer">
 				<button>?</button>
 			</TitleBar>
-		);
-	}
-}
-
-class TitleBar extends React.Component {
-
-	componentDidMount() {
-		this.setState({ window: nw.Window.get(ReactDOM.findDOMNode(this).ownerDocument.defaultView) });
-	}
-
-	render() {
-		return (
-			<div id="titleBar">
-				<div id="titleBarTitle">{this.props.title}</div>
-				<div id="titleBarButtons">
-					{this.props.children}
-					<button onClick={() => this.state.window.minimize()}>-</button>
-					<button onClick={() => this.state.window.toggleFullscreen()}>+</button>
-					<button onClick={() => this.state.window.close()}>x</button>
-				</div>
-			</div>
-		);
-	}
-}
-
-class StatusBar extends React.Component {
-
-	render() {
-		return (
-			<div id="statusBar">
-				{this.props.status}
-			</div>
 		);
 	}
 }

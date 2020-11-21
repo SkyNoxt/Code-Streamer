@@ -65,3 +65,35 @@ export class Window extends React.PureComponent {
 		this.external.window.close();
 	}
 }
+
+export class TitleBar extends React.Component {
+
+	componentDidMount() {
+		this.setState({ window: nw.Window.get(ReactDOM.findDOMNode(this).ownerDocument.defaultView) });
+	}
+
+	render() {
+		return (
+			<div id="titleBar">
+				<div id="titleBarTitle">{this.props.title}</div>
+				<div id="titleBarButtons">
+					{this.props.children}
+					<button onClick={() => this.state.window.minimize()}>-</button>
+					<button onClick={() => this.state.window.toggleFullscreen()}>+</button>
+					<button onClick={() => this.state.window.close()}>x</button>
+				</div>
+			</div>
+		);
+	}
+}
+
+export class StatusBar extends React.Component {
+
+	render() {
+		return (
+			<div id="statusBar">
+				{this.props.status}
+			</div>
+		);
+	}
+}
